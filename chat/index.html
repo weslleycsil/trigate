@@ -93,6 +93,7 @@
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
     var message_holder;
+    var socket;
 
     var HTML_Encode = function (not_encoded_string) {
       let result = { object: null, filtered_message: null };
@@ -139,7 +140,7 @@
     };
 
     $(function () {
-      var socket = io();
+      socket = io();
       message_holder = document.getElementById("message_holder");
 
       $(text_field)[0].addEventListener("keyup", function (event) {
