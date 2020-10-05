@@ -49,7 +49,7 @@ var receive_message_flow = function (message) {
 $(function () {
   socket = io();
   message_holder = document.getElementById("message_holder");
-  message_panel = document.getElementById("message");
+  message_panel = document.getElementById("messages");
 
   $(text_field)[0].addEventListener("keyup", function (event) {
     // Number 13 is the "Enter" key on the keyboard
