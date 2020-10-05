@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>A Multiplayer Game</title>
+	<link href="/static/css/general.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="video-container">
+      <video id="local-video" muted autoplay></video>
+      <video id="remote-video" autoplay></video>
+    </div>
+    <div id="buttons-container"></div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/static/lib/jquery-3.4.1.min.js"></script>
+  <script src="/static/scripts/global.js"></script>
+  <script src="/static/scripts/connection.js"></script>
+  <script src="/static/scripts/video_handler.js"></script>
+  <script src="/static/scripts/main.js"></script>
+</html>
