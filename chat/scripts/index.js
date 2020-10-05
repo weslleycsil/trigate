@@ -3,6 +3,18 @@ var message_panel;
 var socket;
 
 
+var HTML_skip_Encode = function (encoded_string) {
+    let result = { object: null, filtered_message: null };
+    let element = null;
+    try {
+      element = document.createElement("p");
+      element.innerHTML = element.textContent = encoded_string;
+      result["object"] = element;
+      result["filtered_message"] = encoded_string;
+    } catch (e) {}
+  
+    return result;
+  };
 
 var HTML_Encode = function (not_encoded_string) {
   let result = { object: null, filtered_message: null };
@@ -38,7 +50,7 @@ var send_message_flow = function () {
 };
 
 var receive_message_flow = function (message) {
-  let filter_message = HTML_Encode(message);
+  let filter_message = HTML_skip_Encode(message);
   message = filter_message["filtered_message"];
   let p_element = filter_message["object"];
   if (message !== "") {
