@@ -2,14 +2,19 @@ var message_holder;
 var message_panel;
 var socket;
 
+
+
 var HTML_Encode = function (not_encoded_string) {
   let result = { object: null, filtered_message: null };
   let element = null;
   try {
+    let encoded_string = not_encoded_string.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+        return '&#'+i.charCodeAt(0)+';';
+     });
     element = document.createElement("p");
-    element.innerHTML = element.textContent = not_encoded_string;
+    element.innerHTML = element.textContent = encoded_string;
     result["object"] = element;
-    result["filtered_message"] = element.innerHTML;
+    result["filtered_message"] = encoded_string;
   } catch (e) {}
 
   return result;
