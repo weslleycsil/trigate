@@ -1,4 +1,6 @@
 var message_holder;
+var message_panel;
+var socket;
 
 var HTML_Encode = function (not_encoded_string) {
   let result = { object: null, filtered_message: null };
@@ -21,7 +23,7 @@ var send_message_flow = function () {
     let li_element = document.createElement("li");
     li_element.setAttribute("class", "own_message");
     li_element.appendChild(p_element);
-    document.body.appendChild(li_element);
+    message_panel.appendChild(li_element);
     $("#text_field").val("");
 
     message_holder.scrollTop = message_holder.scrollHeight;
@@ -38,15 +40,16 @@ var receive_message_flow = function (message) {
     let li_element = document.createElement("li");
     li_element.setAttribute("class", "other_message");
     li_element.appendChild(p_element);
-    document.body.appendChild(li_element);
+    message_panel.appendChild(li_element);
 
     message_holder.scrollTop = message_holder.scrollHeight;
   }
 };
 
 $(function () {
-  var socket = io();
+  socket = io();
   message_holder = document.getElementById("message_holder");
+  message_panel = document.getElementById("message");
 
   $(text_field)[0].addEventListener("keyup", function (event) {
     // Number 13 is the "Enter" key on the keyboard
