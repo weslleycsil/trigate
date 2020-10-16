@@ -2,19 +2,11 @@
 var SHOW_MODE = true;
 var PORT = SHOW_MODE ? 5000 : 5010;
 
-
 var express = require("express");
-const fs = require('fs');
-const key = fs.readFileSync('./key.pem');
-const cert = fs.readFileSync('./cert.pem');
-
-const https = require("https");
-
 var http = require("http");
 var path = require("path");
 var socketIO = require("socket.io");
 var app = express();
-const server = https.createServer({key: key, cert: cert }, app);
 var server = http.Server(app);
 var io = socketIO(server);
 var MAP_NAME = "clear_water_island";
