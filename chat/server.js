@@ -1,27 +1,29 @@
 // Dependencies
 var PORT = 3000;
 
+
 var express = require("express");
 const fs = require('fs');
 const key = fs.readFileSync('./key.pem');
 const cert = fs.readFileSync('./cert.pem');
 
 const https = require("https");
-var http = require("http").Server(app);
+
+var http = require("http");
+var path = require("path");
 const { connected } = require("process");
 var socketIO = require("socket.io");
 var app = express();
 const server = https.createServer({key: key, cert: cert }, app);
 var io = socketIO(server);
 
-
 app.set("port", PORT);
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
+app.use("/static", express.static(__dirname + "/static"));
+
+// Routing
+app.get("/", function (request, response) {
+  response.sendFile(path.join(__dirname, "/static/index.html"));
 });
-
-app.use("/", express.static(__dirname));
-
 
 // Starts the server.
 server.listen(PORT, function () {
