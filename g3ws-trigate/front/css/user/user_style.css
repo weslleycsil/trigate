@@ -421,7 +421,9 @@ h6 {
 
 .chat-holder{
   width: 100%;
-  height: 100vh;
+  height: 70vh;    
+  border: unset;
+  background: white;
 }
 
 
