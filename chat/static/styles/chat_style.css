@@ -59,15 +59,19 @@ body {
   height: 40px;
 }
 #text_field {
-  width: 80%;
+  width: 100%;
   margin: 0;
   padding: 0;
   padding-left: 15px;
   height: 100%;
 }
 #send_button {
-  width: 15%;
+  width: 100%;
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+.h100{
   height: 100%;
 }
