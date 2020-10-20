@@ -1,0 +1,10 @@
+#video-container {
+  display: flex;    
+  flex-flow: wrap;
+}
+video {
+  width: 48%;
+  margin: 1%;
+  height: auto;
+  background-color: black;
+}
