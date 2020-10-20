@@ -10,9 +10,22 @@
         Salas
       </button>
       <t1 id="room-name">Sala X</t1>
+
       <div class="row">
-        <div class="col-12 mx-auto" id="room-holder">
+        <div class="col-12 mx-auto">
+          <button
+            type="button"
+            class="btn btn-blue-dark btn-sm mb-1"
+            style="float: right"
+            id="button-toggle-screen"
+          ></button>
+        </div>
+        <div class="col-12 mx-auto" id="chat-holder">
           <iframe class="chat-holder" src="https://g3ws.dev.br:3000/"></iframe>
+        </div>
+
+        <div class="col-12 mx-auto" id="camera-holder">
+          <iframe class="chat-holder" src="https://g3ws.dev.br:8080/"></iframe>
         </div>
       </div>
     </div>
