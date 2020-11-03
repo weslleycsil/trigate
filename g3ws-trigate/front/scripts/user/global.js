@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 
-var base_url = "..";
+var base_url = "https://www.trigate.generalwebsolutions.com.br";
 var api_base_url = base_url + "/api";
 var gallery_base_url = base_url + "/gallery/";
 
