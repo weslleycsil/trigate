@@ -2,12 +2,12 @@
 class Database
 {
     private $host = "localhost";
-    // private $db_name = "gener890_trigate";
-    // private $username = "gener890_fbet_master";
-    // private $password = "stroll_roda_presa";
-    private $db_name = "trigate";
-    private $username = "root";
-    private $password = "";
+    private $db_name = "gener890_trigate";
+    private $username = "gener890_trigate_master";
+    private $password = "trigateMaster";
+    // private $db_name = "trigate";
+    // private $username = "root";
+    // private $password = "";
     private $charset = "utf8";
     public $conn;
 

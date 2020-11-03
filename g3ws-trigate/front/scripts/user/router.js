@@ -37,7 +37,7 @@ var change_page = function (page, optional_attr) {
       show_menu();
       change_route("RoomPanel");
       after_load = function () {
-        // populate_rooms();
+        populate_room_painel();
       };
       break;
   }
