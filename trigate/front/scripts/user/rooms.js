@@ -22,32 +22,11 @@ var SUBSCRIBE_BUTTON =
 var JOIN_ROOM_BUTTON =
   '<button type="button" class="btn btn-blue btn-sm w-60 mt-2 mb-2"  id="join-button">Entrar</button>';
 
-var populate_rooms = function () {
-  $.ajax({
-    type: "GET",
-    url: api_base_url + "/rooms/get_rooms_by_user",
-    contentType: "application/json",
-    headers: {
-      Authorization: "Bearer " + stored_token,
-    },
-    success: function (data) {
-      user_rooms = data;
-      $.ajax({
-        type: "GET",
-        url: api_base_url + "/rooms/get_rooms",
-        contentType: "application/json",
-        success: function (data_rooms) {
-          create_room_cards(data_rooms, user_rooms);
-        },
-        error: function (data) {},
-      });
-    },
-    error: function (data) {},
-  });
-};
-
 var create_room_cards = function (users_data, user_rooms) {
   let room_container = $("#rooms-container");
+  
+  console.log(users_data)
+  console.log(users_data["rooms"])
   $.each(users_data["rooms"], function (room_index, room_element) {
     let new_card = $.parseHTML(ROOM_CARD);
     $(new_card).find("#room-name").html(room_element[0]["name"]);
@@ -87,5 +66,32 @@ var create_room_cards = function (users_data, user_rooms) {
       });
     }
     $(room_container).append(new_card);
+  });
+};
+
+
+var populate_rooms = function () {
+  $.ajax({
+    type: "GET",
+    url: api_base_url + "/rooms/get_rooms_by_user",
+    contentType: "application/json",
+    headers: {
+      Authorization: "Bearer " + stored_token,
+    },
+    success: function (data) {
+      user_rooms =  data;
+      console.log(data)
+      $.ajax({
+        type: "GET",
+        url: api_base_url + "/rooms/get_rooms",
+        contentType: "application/json",
+        success: function (data_rooms) {
+          console.log(data_rooms)
+          create_room_cards(data_rooms, user_rooms);
+        },
+        error: function (data) {},
+      });
+    },
+    error: function (data) {},
   });
 };
