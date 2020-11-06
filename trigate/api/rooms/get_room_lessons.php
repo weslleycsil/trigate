@@ -1,7 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
 
+include_once '../global/cors_get.php';
 // get database connection
 include_once '../config/database.php';
 include_once '../global/utils.php';
