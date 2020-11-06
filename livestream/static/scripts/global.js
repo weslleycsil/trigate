@@ -69,6 +69,7 @@ var peerConstructor = function (key) {
     newPeerConnection.ontrack = function ({ streams: [stream] }) {
       let remoteVideo = all_peers[key]["htmlVideoObject"];
       if (remoteVideo) {
+        console.log(all_peers[key]["htmlVideoObject"])
         remoteVideo.srcObject = stream;
       }
     };
