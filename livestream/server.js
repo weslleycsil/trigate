@@ -1,11 +1,10 @@
 // Dependencies
 var PORT = 8080;
 
-
 var express = require("express");
-const fs = require('fs');
-const key = fs.readFileSync('./key.pem');
-const cert = fs.readFileSync('./cert.pem');
+const fs = require("fs");
+const key = fs.readFileSync("./key.pem");
+const cert = fs.readFileSync("./cert.pem");
 
 const https = require("https");
 
@@ -14,7 +13,7 @@ var path = require("path");
 const { connected } = require("process");
 var socketIO = require("socket.io");
 var app = express();
-const server = https.createServer({key: key, cert: cert }, app);
+const server = https.createServer({ key: key, cert: cert }, app);
 var io = socketIO(server);
 
 var active_users = {};
@@ -36,13 +35,15 @@ io.on("connection", function (socket) {
   initialize_socket(socket);
 
   socket.on("call-user", function (data) {
-	socket.to(data.to).emit("call-made", {
+    console.log(socket.id + " IS CALLING " + data.to);
+    socket.to(data.to).emit("call-made", {
       offer: data.offer,
       socket: socket.id,
     });
   });
 
   socket.on("make-answer", (data) => {
+    console.log(socket.id + " IS ANSWERING " + data.to);
     socket.to(data.to).emit("answer-made", {
       socket: socket.id,
       answer: data.answer,
