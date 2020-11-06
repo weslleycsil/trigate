@@ -70,6 +70,7 @@ var peerConstructor = function (key) {
       let remoteVideo = all_peers[key]["htmlVideoObject"];
       if (remoteVideo) {
         console.log(all_peers[key]["htmlVideoObject"])
+        console.log(stream)
         remoteVideo.srcObject = stream;
       }
     };
