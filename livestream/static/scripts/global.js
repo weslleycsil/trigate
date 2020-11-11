@@ -25,12 +25,8 @@ var removeUser = function (user_id) {
 var getAllUsers = function (user_list) {
   $.each(user_list, function (key, element) {
     insertUser(key);
+    callUser(key);
   });
-  setTimeout(function(){
-    $.each(user_list, function (key, element) {
-      callUser(key);
-    });
-  },5000);
 };
 
 var callUser = async function (user_id) {
