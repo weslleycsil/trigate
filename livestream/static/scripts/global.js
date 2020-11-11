@@ -45,13 +45,7 @@ var callUser = async function (user_id) {
 var peerConstructor = function (key) {
   if (!!!all_peers[key]) {
     let newPeerConnection = new RTCPeerConnection({
-      iceServers: [
-        {
-          url: [
-            "stun:stun.l.google.com:19302?transport=udp",
-          ],
-        },
-      ],
+      iceServers: [{ url: "stun:stun.1.google.com:19302" }],
     });
     let newObject = $.parseHTML(
       '<video id="video-' + key + '"  autoplay></video>'
@@ -75,8 +69,8 @@ var peerConstructor = function (key) {
     newPeerConnection.ontrack = function ({ streams: [stream] }) {
       let remoteVideo = all_peers[key]["htmlVideoObject"];
       if (remoteVideo) {
-        console.log(all_peers[key]["htmlVideoObject"]);
-        console.log(stream);
+        console.log(all_peers[key]["htmlVideoObject"])
+        console.log(stream)
         remoteVideo.srcObject = stream;
       }
     };
@@ -123,3 +117,4 @@ var toggleMedia = async function () {
     all_peers[key]["videoSender"].replaceTrack(newTrack);
   });
 };
+
