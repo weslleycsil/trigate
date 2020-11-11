@@ -28,18 +28,15 @@ var initialize_connection = function () {
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(answer)
     );
-
+    console.log(getPeer["peerConnection"].iceConnectionState);
     if (getPeer["peerConnection"].iceConnectionState === "failed") {
       console.log("THIS FAILED");
       getPeer["peerConnection"].restartIce();
-    } else {
-      console.log("CALL-MADE IS NOT DEAD");
-      console.log(getPeer["peerConnection"]);
-      SOCKET.emit("make-answer", {
-        answer,
-        to: data.socket,
-      });
     }
+    SOCKET.emit("make-answer", {
+      answer,
+      to: data.socket,
+    });
   });
 
   SOCKET.on("answer-made", async (data) => {
@@ -48,8 +45,10 @@ var initialize_connection = function () {
     await getPeer["peerConnection"].setRemoteDescription(
       new RTCSessionDescription(data.answer)
     );
-    console.log("ANSWER-MADE IS NOT DEAD");
-    console.log(getPeer["peerConnection"]);
+    if (getPeer["peerConnection"].iceConnectionState === "failed") {
+      console.log("THIS FAILED");
+      getPeer["peerConnection"].restartIce();
+    }
     callUser(data.socket);
   });
 };
