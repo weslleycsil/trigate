@@ -75,8 +75,6 @@ var peerConstructor = function (key) {
       }
     };
 
-
-
     all_peers[key]["videoSender"] = videoSender;
     all_peers[key]["audioSender"] = audioSender;
   }
