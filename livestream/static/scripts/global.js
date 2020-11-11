@@ -33,7 +33,7 @@ var callUser = async function (user_id) {
   console.log("Calling " + user_id);
   let getPeer = all_peers[user_id];
   if (getPeer["waitingConnection"] < 2) {
-    const offer = await getPeer["peerConnection"].createOffer();
+    const offer = await getPeer["peerConnection"].createOffer({"iceRestart": true});
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(offer)
     );
