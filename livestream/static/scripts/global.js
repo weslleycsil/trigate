@@ -88,10 +88,6 @@ var peerConstructor = function (key) {
         }
       }
     }
-    if (getPeer["peerConnection"].iceConnectionState === "failed") {
-      console.log("THIS FAILED");
-      getPeer["peerConnection"].restartIce();
-    }
 
     all_peers[key]["videoSender"] = videoSender;
     all_peers[key]["audioSender"] = audioSender;
