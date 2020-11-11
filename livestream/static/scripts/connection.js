@@ -19,7 +19,7 @@ var initialize_connection = function () {
 
   SOCKET.on("call-made", async (data) => {
     console.log("call-made (making answer) " + data.socket);
-    console.log(all_peers[data.socket]);
+    console.log(all_peers[data.socket])
     let getPeer = all_peers[data.socket];
     await getPeer["peerConnection"].setRemoteDescription(
       new RTCSessionDescription(data.offer)
@@ -28,7 +28,9 @@ var initialize_connection = function () {
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(answer)
     );
-    
+
+    console.log("CALL-MADE IS NOT DEAD")
+    console.log(getPeer["peerConnection"]) 
     SOCKET.emit("make-answer", {
       answer,
       to: data.socket,
@@ -41,7 +43,8 @@ var initialize_connection = function () {
     await getPeer["peerConnection"].setRemoteDescription(
       new RTCSessionDescription(data.answer)
     );
-
+    console.log("ANSWER-MADE IS NOT DEAD")
+    console.log(getPeer["peerConnection"])
     callUser(data.socket);
   });
 };
