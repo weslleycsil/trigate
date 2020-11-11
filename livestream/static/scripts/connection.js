@@ -28,6 +28,10 @@ var initialize_connection = function () {
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(answer)
     );
+    getPeer["peerConnection"].iceConnectionState === "failed") {
+      console.log("THIS FAILED");
+      getPeer["peerConnection"].restartIce();
+    }
 
     console.log("CALL-MADE IS NOT DEAD")
     console.log(getPeer["peerConnection"]) 
