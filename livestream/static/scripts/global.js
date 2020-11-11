@@ -82,9 +82,9 @@ var peerConstructor = function (key) {
           newPeerConnection.restartIce();
         } else {
           console.log("FOR NOW, NOT USED")
-          // newPeerConnection.createOffer({ iceRestart: true })
-          // .then(newPeerConnection.setLocalDescription)
-          // .then(sendOfferToServer);
+          newPeerConnection.createOffer({ iceRestart: true })
+          .then(newPeerConnection.setLocalDescription)
+          .then(sendOfferToServer);
         }
       }
     }
