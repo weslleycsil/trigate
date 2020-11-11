@@ -28,11 +28,7 @@ var initialize_connection = function () {
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(answer)
     );
-    console.log(getPeer["peerConnection"].iceConnectionState);
-    if (getPeer["peerConnection"].iceConnectionState === "failed") {
-      console.log("THIS FAILED");
-      getPeer["peerConnection"].restartIce();
-    }
+    
     SOCKET.emit("make-answer", {
       answer,
       to: data.socket,
@@ -45,10 +41,7 @@ var initialize_connection = function () {
     await getPeer["peerConnection"].setRemoteDescription(
       new RTCSessionDescription(data.answer)
     );
-    if (getPeer["peerConnection"].iceConnectionState === "failed") {
-      console.log("THIS FAILED");
-      getPeer["peerConnection"].restartIce();
-    }
+
     callUser(data.socket);
   });
 };
