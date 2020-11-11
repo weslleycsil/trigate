@@ -19,6 +19,7 @@ var initialize_connection = function () {
 
   SOCKET.on("call-made", async (data) => {
     console.log("call-made (making answer) " + data.socket);
+    console.log(all_peers[data.socket])
     let getPeer = all_peers[data.socket];
     await getPeer["peerConnection"].setRemoteDescription(
       new RTCSessionDescription(data.offer)
