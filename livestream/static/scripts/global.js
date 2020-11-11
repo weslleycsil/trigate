@@ -75,19 +75,7 @@ var peerConstructor = function (key) {
       }
     };
 
-    newPeerConnection.oniceconnectionstatechange = function(evt) {
-      if (newPeerConnection.iceConnectionState === "failed") {
-        console.log("CONNECTION FAILED")
-        if (newPeerConnection.restartIce) {
-          newPeerConnection.restartIce();
-        } else {
-          console.log("FOR NOW, NOT USED")
-          newPeerConnection.createOffer({ iceRestart: true })
-          .then(newPeerConnection.setLocalDescription)
-          .then(sendOfferToServer);
-        }
-      }
-    }
+
 
     all_peers[key]["videoSender"] = videoSender;
     all_peers[key]["audioSender"] = audioSender;
