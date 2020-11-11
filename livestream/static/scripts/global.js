@@ -25,14 +25,18 @@ var removeUser = function (user_id) {
 var getAllUsers = function (user_list) {
   $.each(user_list, function (key, element) {
     insertUser(key);
-    callUser(key);
   });
+  setTimeout(function(){
+    $.each(user_list, function (key, element) {
+      callUser(key);
+    });
+  },5000);
 };
 
 var callUser = async function (user_id) {
   console.log("Calling " + user_id);
   let getPeer = all_peers[user_id];
-  if (getPeer["waitingConnection"] < 200) {
+  if (getPeer["waitingConnection"] < 2) {
     const offer = await getPeer["peerConnection"].createOffer();
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(offer)
