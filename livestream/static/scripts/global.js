@@ -45,7 +45,7 @@ var callUser = async function (user_id) {
 var peerConstructor = function (key) {
   if (!!!all_peers[key]) {
     var newPeerConnection = new RTCPeerConnection({
-      iceServers: [{ url: 'stun:stun.l.google.com:19302?transport=udp' }],
+      iceServers: [{ url: "stun:stun.l.google.com:19302?transport=udp" }],
     });
     var newObject = $.parseHTML(
       '<video id="video-' + key + '"  autoplay></video>'
@@ -60,17 +60,20 @@ var peerConstructor = function (key) {
 
     var stream = $("#video-local")[0].srcObject;
     // stream.getTracks().forEach((track) => newPeerConnection.addTrack(track, stream));
-
-    var camVideoTrack = stream.getVideoTracks()[0];
+    var camVideoTrack;
+    var videoSender = null;
+    try{
+      camVideoTrack = stream.getVideoTracks()[0];
+      videoSender = newPeerConnection.addTrack(camVideoTrack, stream);
+    }catch(e){}
     var camAudioTrack = stream.getAudioTracks()[0];
-    var videoSender = newPeerConnection.addTrack(camVideoTrack, stream);
     var audioSender = newPeerConnection.addTrack(camAudioTrack, stream);
 
     newPeerConnection.ontrack = function ({ streams: [stream] }) {
       var remoteVideo = all_peers[key]["htmlVideoObject"];
       if (remoteVideo) {
-        console.log(all_peers[key]["htmlVideoObject"])
-        console.log(stream)
+        console.log(all_peers[key]["htmlVideoObject"]);
+        console.log(stream);
         remoteVideo.srcObject = stream;
       }
     };
@@ -82,9 +85,7 @@ var peerConstructor = function (key) {
 };
 
 var initialize_midia = async function () {
-  try{
-    await get_media();
-  }catch(e){}
+  await get_media();
   initialize_connection();
 };
 
@@ -119,4 +120,3 @@ var toggleMedia = async function () {
     all_peers[key]["videoSender"].replaceTrack(newTrack);
   });
 };
-
