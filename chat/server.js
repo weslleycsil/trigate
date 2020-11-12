@@ -31,6 +31,7 @@ server.listen(PORT, function () {
 });
 
 io.on("connection", function (socket) {
+  console.log("Socket " + socket + " joined us!");
   socket.on("send_message", function (msg) {
     socket.broadcast.emit("send_message", msg);
   });
