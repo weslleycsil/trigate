@@ -67,10 +67,10 @@ var CONSTRAINTS = { audio: true, video: true };
 //     try{
 //       camVideoTrack = stream.getVideoTracks()[0];
 //       camAudioTrack = stream.getAudioTracks()[0];
-      
+
 //       videoSender = newPeerConnection.addTrack(camVideoTrack, stream);
 //       audioSender = newPeerConnection.addTrack(camAudioTrack, stream);
-      
+
 //       newPeerConnection.ontrack = function ({ streams: [stream] }) {
 //         var remoteVideo = all_peers[key]["htmlVideoObject"];
 //         if (remoteVideo) {
@@ -79,18 +79,19 @@ var CONSTRAINTS = { audio: true, video: true };
 //           remoteVideo.srcObject = stream;
 //         }
 //       };
-  
+
 //       all_peers[key]["videoSender"] = videoSender;
 //       all_peers[key]["audioSender"] = audioSender;
 //     }catch(e){}
 
-    
 //   }
 //   return all_peers[key];
 // };
 
 var initialize_midia = function () {
   get_media();
+
+  $("#debugger").text("INITIALIZE WORKING");
   // initialize_connection();
 };
 
@@ -98,7 +99,10 @@ var get_media = function () {
   var stream = null;
   try {
     stream = navigator.mediaDevices.getUserMedia(CONSTRAINTS);
-    $("#video-local")[0].srcObject = stream;
+    setTimeout(function () {
+      $("#debugger").text("STREAMING");
+      $("#video-local")[0].srcObject = stream;
+    }, 5000);
   } catch (err) {}
   return stream;
 };
