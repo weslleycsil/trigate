@@ -13,78 +13,78 @@ var all_peers = {};
 var isAlreadyCalling = false;
 var cameraToggle = true;
 
-// var insertUser = function (user_id) {
-//   peerConstructor(user_id);
-// };
+var insertUser = function (user_id) {
+  peerConstructor(user_id);
+};
 
-// var removeUser = function (user_id) {
-//   $(all_peers[user_id]["htmlVideoObject"]).remove();
-//   delete all_peers[user_id];
-// };
+var removeUser = function (user_id) {
+  $(all_peers[user_id]["htmlVideoObject"]).remove();
+  delete all_peers[user_id];
+};
 
-// var getAllUsers = function (user_list) {
-//   $.each(user_list, function (key, element) {
-//     insertUser(key);
-//     callUser(key);
-//   });
-// };
+var getAllUsers = function (user_list) {
+  $.each(user_list, function (key, element) {
+    insertUser(key);
+    callUser(key);
+  });
+};
 
-// var callUser = async function (user_id) {
-//   console.log("Calling " + user_id);
-//   var getPeer = all_peers[user_id];
-//   if (getPeer["waitingConnection"] < 2) {
-//     var offer = await getPeer["peerConnection"].createOffer();
-//     await getPeer["peerConnection"].setLocalDescription(
-//       new RTCSessionDescription(offer)
-//     );
-//     SOCKET.emit("call-user", { offer, to: user_id });
-//     getPeer["waitingConnection"]++;
-//   }
-// };
+var callUser = async function (user_id) {
+  console.log("Calling " + user_id);
+  var getPeer = all_peers[user_id];
+  if (getPeer["waitingConnection"] < 2) {
+    var offer = await getPeer["peerConnection"].createOffer();
+    await getPeer["peerConnection"].setLocalDescription(
+      new RTCSessionDescription(offer)
+    );
+    SOCKET.emit("call-user", { offer, to: user_id });
+    getPeer["waitingConnection"]++;
+  }
+};
 
-// var peerConstructor = function (key) {
-//   if (!!!all_peers[key]) {
-//     var newPeerConnection = new RTCPeerConnection({
-//       iceServers: [{ url: 'stun:stun.l.google.com:19302?transport=udp' }],
-//     });
-//     var newObject = $.parseHTML(
-//       '<video id="video-' + key + '"  autoplay></video>'
-//     );
-//     $(VIDEO_CONTAINER).append(newObject);
-//     all_peers[key] = {
-//       peerConnection: newPeerConnection,
-//       htmlVideoId: "video-" + key,
-//       htmlVideoObject: newObject[0],
-//       waitingConnection: 0,
-//     };
+var peerConstructor = function (key) {
+  if (!!!all_peers[key]) {
+    var newPeerConnection = new RTCPeerConnection({
+      iceServers: [{ url: 'stun:stun.l.google.com:19302?transport=udp' }],
+    });
+    var newObject = $.parseHTML(
+      '<video id="video-' + key + '"  autoplay></video>'
+    );
+    $(VIDEO_CONTAINER).append(newObject);
+    all_peers[key] = {
+      peerConnection: newPeerConnection,
+      htmlVideoId: "video-" + key,
+      htmlVideoObject: newObject[0],
+      waitingConnection: 0,
+    };
 
-//     var stream = $("#video-local")[0].srcObject;
-//     // stream.getTracks().forEach((track) => newPeerConnection.addTrack(track, stream));
+    var stream = $("#video-local")[0].srcObject;
+    // stream.getTracks().forEach((track) => newPeerConnection.addTrack(track, stream));
 
-//     var camVideoTrack = stream.getVideoTracks()[0];
-//     var camAudioTrack = stream.getAudioTracks()[0];
-//     var videoSender = newPeerConnection.addTrack(camVideoTrack, stream);
-//     var audioSender = newPeerConnection.addTrack(camAudioTrack, stream);
+    var camVideoTrack = stream.getVideoTracks()[0];
+    var camAudioTrack = stream.getAudioTracks()[0];
+    var videoSender = newPeerConnection.addTrack(camVideoTrack, stream);
+    var audioSender = newPeerConnection.addTrack(camAudioTrack, stream);
 
-//     newPeerConnection.ontrack = function ({ streams: [stream] }) {
-//       var remoteVideo = all_peers[key]["htmlVideoObject"];
-//       if (remoteVideo) {
-//         console.log(all_peers[key]["htmlVideoObject"])
-//         console.log(stream)
-//         remoteVideo.srcObject = stream;
-//       }
-//     };
+    newPeerConnection.ontrack = function ({ streams: [stream] }) {
+      var remoteVideo = all_peers[key]["htmlVideoObject"];
+      if (remoteVideo) {
+        console.log(all_peers[key]["htmlVideoObject"])
+        console.log(stream)
+        remoteVideo.srcObject = stream;
+      }
+    };
 
-//     all_peers[key]["videoSender"] = videoSender;
-//     all_peers[key]["audioSender"] = audioSender;
-//   }
-//   return all_peers[key];
-// };
+    all_peers[key]["videoSender"] = videoSender;
+    all_peers[key]["audioSender"] = audioSender;
+  }
+  return all_peers[key];
+};
 
-// var initialize_midia = async function () {
-//   await get_media();
-//   initialize_connection();
-// };
+var initialize_midia = async function () {
+  await get_media();
+  initialize_connection();
+};
 
 // var get_media = async function () {
 //   var stream = null;
