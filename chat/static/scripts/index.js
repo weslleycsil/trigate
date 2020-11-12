@@ -2,10 +2,6 @@ var message_holder;
 var message_panel;
 var socket;
 
-var print = function(msg){
-  document.getElementById("demo-text").innerHTML += "<br/>"+msg;
-}
-print("ATLEAST JAVASCRIPT IS WORKING");
 
 var HTML_skip_Encode = function (encoded_string) {
     var result = { object: null, filtered_message: null };
@@ -48,10 +44,7 @@ var send_message_flow = function () {
     $("#text_field").val("");
 
     message_holder.scrollTop = message_holder.scrollHeight;
-
-    print("ALMOST SENDING MESSAGE");
     socket.emit("send_message", message);
-    print("MESSAGE SENT!");
   }
 };
 
@@ -69,12 +62,8 @@ var receive_message_flow = function (message) {
   }
 };
 
-print("I'M JAVASCRIPT BITCH!");
-
 $(function () {
   socket = io();
-  print("JQUERY STARTER");
-  print(socket);
   message_holder = document.getElementById("message_holder");
   message_panel = document.getElementById("messages");
 
@@ -88,7 +77,6 @@ $(function () {
   });
 
   $("#send_button").on("click", function () {
-    print("SENDING MESSAGE");
     send_message_flow();
   });
 
