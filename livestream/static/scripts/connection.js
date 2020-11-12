@@ -24,7 +24,7 @@ var initialize_connection = function () {
     await getPeer["peerConnection"].setRemoteDescription(
       new RTCSessionDescription(data.offer)
     );
-    const answer = await getPeer["peerConnection"].createAnswer();
+    var answer = await getPeer["peerConnection"].createAnswer();
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(answer)
     );

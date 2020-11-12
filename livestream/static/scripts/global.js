@@ -1,4 +1,4 @@
-const { RTCPeerConnection, RTCSessionDescription } = window;
+var { RTCPeerConnection, RTCSessionDescription } = window;
 
 var SOCKET;
 var VIDEO_CONTAINER;
@@ -33,7 +33,7 @@ var callUser = async function (user_id) {
   console.log("Calling " + user_id);
   var getPeer = all_peers[user_id];
   if (getPeer["waitingConnection"] < 2) {
-    const offer = await getPeer["peerConnection"].createOffer();
+    var offer = await getPeer["peerConnection"].createOffer();
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(offer)
     );
