@@ -19,7 +19,7 @@ var insertUser = function (user_id) {
 
 var removeUser = function (user_id) {
   $(all_peers[user_id]["htmlVideoObject"]).remove();
-  delete all_peers[user_id];
+  devare all_peers[user_id];
 };
 
 var getAllUsers = function (user_list) {
@@ -31,7 +31,7 @@ var getAllUsers = function (user_list) {
 
 var callUser = async function (user_id) {
   console.log("Calling " + user_id);
-  let getPeer = all_peers[user_id];
+  var getPeer = all_peers[user_id];
   if (getPeer["waitingConnection"] < 2) {
     const offer = await getPeer["peerConnection"].createOffer();
     await getPeer["peerConnection"].setLocalDescription(
@@ -44,10 +44,10 @@ var callUser = async function (user_id) {
 
 var peerConstructor = function (key) {
   if (!!!all_peers[key]) {
-    let newPeerConnection = new RTCPeerConnection({
+    var newPeerConnection = new RTCPeerConnection({
       iceServers: [{ url: 'stun:stun.l.google.com:19302?transport=udp' }],
     });
-    let newObject = $.parseHTML(
+    var newObject = $.parseHTML(
       '<video id="video-' + key + '"  autoplay></video>'
     );
     $(VIDEO_CONTAINER).append(newObject);
@@ -58,16 +58,16 @@ var peerConstructor = function (key) {
       waitingConnection: 0,
     };
 
-    let stream = $("#video-local")[0].srcObject;
+    var stream = $("#video-local")[0].srcObject;
     // stream.getTracks().forEach((track) => newPeerConnection.addTrack(track, stream));
 
-    let camVideoTrack = stream.getVideoTracks()[0];
-    let camAudioTrack = stream.getAudioTracks()[0];
-    let videoSender = newPeerConnection.addTrack(camVideoTrack, stream);
-    let audioSender = newPeerConnection.addTrack(camAudioTrack, stream);
+    var camVideoTrack = stream.getVideoTracks()[0];
+    var camAudioTrack = stream.getAudioTracks()[0];
+    var videoSender = newPeerConnection.addTrack(camVideoTrack, stream);
+    var audioSender = newPeerConnection.addTrack(camAudioTrack, stream);
 
     newPeerConnection.ontrack = function ({ streams: [stream] }) {
-      let remoteVideo = all_peers[key]["htmlVideoObject"];
+      var remoteVideo = all_peers[key]["htmlVideoObject"];
       if (remoteVideo) {
         console.log(all_peers[key]["htmlVideoObject"])
         console.log(stream)
@@ -87,7 +87,7 @@ var initialize_midia = async function () {
 };
 
 var get_media = async function () {
-  let stream = null;
+  var stream = null;
   try {
     stream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
     $("#video-local")[0].srcObject = stream;
@@ -96,7 +96,7 @@ var get_media = async function () {
 };
 
 var get_screen = async function () {
-  let stream = null;
+  var stream = null;
   try {
     stream = await navigator.mediaDevices.getDisplayMedia();
     $("#video-local")[0].srcObject = stream;
@@ -105,14 +105,14 @@ var get_screen = async function () {
 };
 
 var toggleMedia = async function () {
-  let stream = null;
+  var stream = null;
   cameraToggle = !cameraToggle;
   if (cameraToggle) {
     stream = await get_media();
   } else {
     stream = await get_screen();
   }
-  let newTrack = stream.getVideoTracks()[0];
+  var newTrack = stream.getVideoTracks()[0];
   $.each(all_peers, function (key, element) {
     all_peers[key]["videoSender"].replaceTrack(newTrack);
   });

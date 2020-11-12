@@ -20,7 +20,7 @@ var initialize_connection = function () {
   SOCKET.on("call-made", async (data) => {
     console.log("call-made (making answer) " + data.socket);
     console.log(all_peers[data.socket])
-    let getPeer = all_peers[data.socket];
+    var getPeer = all_peers[data.socket];
     await getPeer["peerConnection"].setRemoteDescription(
       new RTCSessionDescription(data.offer)
     );
@@ -39,7 +39,7 @@ var initialize_connection = function () {
 
   SOCKET.on("answer-made", async (data) => {
     console.log("answer-made (call-user) " + data.socket);
-    let getPeer = all_peers[data.socket];
+    var getPeer = all_peers[data.socket];
     await getPeer["peerConnection"].setRemoteDescription(
       new RTCSessionDescription(data.answer)
     );
