@@ -45,7 +45,9 @@ var send_message_flow = function () {
 
     message_holder.scrollTop = message_holder.scrollHeight;
 
+    alert("ALMOST SENDING MESSAGE");
     socket.emit("send_message", message);
+    alert("MESSAGE SENT!");
   }
 };
 
@@ -65,6 +67,7 @@ var receive_message_flow = function (message) {
 
 $(function () {
   socket = io();
+  alert(socket);
   message_holder = document.getElementById("message_holder");
   message_panel = document.getElementById("messages");
 
@@ -78,6 +81,7 @@ $(function () {
   });
 
   $("#send_button").on("click", function () {
+    alert("SENDING MESSAGE");
     send_message_flow();
   });
 
