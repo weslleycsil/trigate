@@ -2,6 +2,9 @@ var message_holder;
 var message_panel;
 var socket;
 
+var print = function(msg){
+  document.getElementById("demo-text").innerHTML += "<br/>"+msg;
+}
 
 var HTML_skip_Encode = function (encoded_string) {
     let result = { object: null, filtered_message: null };
@@ -45,9 +48,9 @@ var send_message_flow = function () {
 
     message_holder.scrollTop = message_holder.scrollHeight;
 
-    alert("ALMOST SENDING MESSAGE");
+    print("ALMOST SENDING MESSAGE");
     socket.emit("send_message", message);
-    alert("MESSAGE SENT!");
+    print("MESSAGE SENT!");
   }
 };
 
@@ -65,9 +68,12 @@ var receive_message_flow = function (message) {
   }
 };
 
+print("I'M JAVASCRIPT BITCH!");
+
 $(function () {
   socket = io();
-  alert(socket);
+  print("JQUERY STARTER");
+  print(socket);
   message_holder = document.getElementById("message_holder");
   message_panel = document.getElementById("messages");
 
@@ -81,7 +87,7 @@ $(function () {
   });
 
   $("#send_button").on("click", function () {
-    alert("SENDING MESSAGE");
+    print("SENDING MESSAGE");
     send_message_flow();
   });
 

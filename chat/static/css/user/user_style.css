@@ -1,3 +1,14 @@
+body{
+  background: #181818;
+}
+#demo-holder{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 50vh;
+  width: 25vw;
+}
+
 t3 {
   font-size: 1rem;
 }
