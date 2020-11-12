@@ -19,7 +19,7 @@ var insertUser = function (user_id) {
 
 var removeUser = function (user_id) {
   $(all_peers[user_id]["htmlVideoObject"]).remove();
-  devare all_peers[user_id];
+  delete all_peers[user_id];
 };
 
 var getAllUsers = function (user_list) {
