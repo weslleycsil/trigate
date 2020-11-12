@@ -76,18 +76,3 @@ body {
 .h100 {
   height: 100%;
 }
-
-#demo-holder {
-  background: white;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 50vh;
-  width: 25vw;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  z-index: 1;
-}
-#message_holder {
-  background: #181818;
-}
