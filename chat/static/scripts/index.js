@@ -1,6 +1,6 @@
-// var message_holder;
-// var message_panel;
-// var socket;
+var message_holder;
+var message_panel;
+var socket;
 
 var print = function(msg){
   document.getElementById("demo-text").innerHTML += "<br/>"+msg;
@@ -8,15 +8,14 @@ var print = function(msg){
 print("ATLEAST JAVASCRIPT IS WORKING");
 
 var HTML_skip_Encode = function (encoded_string) {
-    var result = "NOTHING";
-    // let result = { object: null, filtered_message: null };
-    // let element = null;
-    // try {
-    //   element = document.createElement("p");
-    //   element.innerHTML = element.textContent = encoded_string;
-    //   result["object"] = element;
-    //   result["filtered_message"] = encoded_string;
-    // } catch (e) {}
+    var result = { object: null, filtered_message: null };
+    var element = null;
+    try {
+      element = document.createElement("p");
+      element.innerHTML = element.textContent = encoded_string;
+      result["object"] = element;
+      result["filtered_message"] = encoded_string;
+    } catch (e) {}
   
     return result;
   };
