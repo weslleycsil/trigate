@@ -91,9 +91,9 @@ var peerConstructor = function (key) {
 
 var initialize_midia = async function () {
   $("#debugger").text("STEP 0");
-  await get_media();
+  // await get_media();
   $("#debugger").text("STEP 1");
-  initialize_connection();
+  // initialize_connection();
 };
 
 var get_media = async function () {
