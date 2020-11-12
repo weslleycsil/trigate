@@ -1,17 +1,3 @@
-#demo-holder {
-  background: white;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 50vh;
-  width: 25vw;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-#message_holder {
-  background: #181818;
-}
-
 t3 {
   font-size: 1rem;
 }
