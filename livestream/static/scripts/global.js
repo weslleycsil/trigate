@@ -86,35 +86,35 @@ var initialize_midia = async function () {
   initialize_connection();
 };
 
-// var get_media = async function () {
-//   var stream = null;
-//   try {
-//     stream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
-//     $("#video-local")[0].srcObject = stream;
-//   } catch (err) {}
-//   return stream;
-// };
+var get_media = async function () {
+  var stream = null;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
+    $("#video-local")[0].srcObject = stream;
+  } catch (err) {}
+  return stream;
+};
 
-// var get_screen = async function () {
-//   var stream = null;
-//   try {
-//     stream = await navigator.mediaDevices.getDisplayMedia();
-//     $("#video-local")[0].srcObject = stream;
-//   } catch (err) {}
-//   return stream;
-// };
+var get_screen = async function () {
+  var stream = null;
+  try {
+    stream = await navigator.mediaDevices.getDisplayMedia();
+    $("#video-local")[0].srcObject = stream;
+  } catch (err) {}
+  return stream;
+};
 
-// var toggleMedia = async function () {
-//   var stream = null;
-//   cameraToggle = !cameraToggle;
-//   if (cameraToggle) {
-//     stream = await get_media();
-//   } else {
-//     stream = await get_screen();
-//   }
-//   var newTrack = stream.getVideoTracks()[0];
-//   $.each(all_peers, function (key, element) {
-//     all_peers[key]["videoSender"].replaceTrack(newTrack);
-//   });
-// };
+var toggleMedia = async function () {
+  var stream = null;
+  cameraToggle = !cameraToggle;
+  if (cameraToggle) {
+    stream = await get_media();
+  } else {
+    stream = await get_screen();
+  }
+  var newTrack = stream.getVideoTracks()[0];
+  $.each(all_peers, function (key, element) {
+    all_peers[key]["videoSender"].replaceTrack(newTrack);
+  });
+};
 
