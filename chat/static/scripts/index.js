@@ -8,8 +8,9 @@ var print = function(msg){
 print("ATLEAST JAVASCRIPT IS WORKING");
 
 var HTML_skip_Encode = function (encoded_string) {
-    let result = { object: null, filtered_message: null };
-    let element = null;
+    var result = "NOTHING";
+    // let result = { object: null, filtered_message: null };
+    // let element = null;
     // try {
     //   element = document.createElement("p");
     //   element.innerHTML = element.textContent = encoded_string;
