@@ -7,34 +7,34 @@ var print = function(msg){
 }
 print("ATLEAST JAVASCRIPT IS WORKING");
 
-var HTML_skip_Encode = function (encoded_string) {
-    let result = { object: null, filtered_message: null };
-    let element = null;
-    try {
-      element = document.createElement("p");
-      element.innerHTML = element.textContent = encoded_string;
-      result["object"] = element;
-      result["filtered_message"] = encoded_string;
-    } catch (e) {}
+// var HTML_skip_Encode = function (encoded_string) {
+//     let result = { object: null, filtered_message: null };
+//     let element = null;
+//     try {
+//       element = document.createElement("p");
+//       element.innerHTML = element.textContent = encoded_string;
+//       result["object"] = element;
+//       result["filtered_message"] = encoded_string;
+//     } catch (e) {}
   
-    return result;
-  };
+//     return result;
+//   };
 
-var HTML_Encode = function (not_encoded_string) {
-  let result = { object: null, filtered_message: null };
-  let element = null;
-  try {
-    let encoded_string = not_encoded_string.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-        return '&#'+i.charCodeAt(0)+';';
-     });
-    element = document.createElement("p");
-    element.innerHTML = element.textContent = encoded_string;
-    result["object"] = element;
-    result["filtered_message"] = encoded_string;
-  } catch (e) {}
+// var HTML_Encode = function (not_encoded_string) {
+//   let result = { object: null, filtered_message: null };
+//   let element = null;
+//   try {
+//     let encoded_string = not_encoded_string.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+//         return '&#'+i.charCodeAt(0)+';';
+//      });
+//     element = document.createElement("p");
+//     element.innerHTML = element.textContent = encoded_string;
+//     result["object"] = element;
+//     result["filtered_message"] = encoded_string;
+//   } catch (e) {}
 
-  return result;
-};
+//   return result;
+// };
 
 // var send_message_flow = function () {
 //   let filter_message = HTML_Encode($("#text_field").val());
