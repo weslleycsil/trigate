@@ -4,7 +4,7 @@
 // var VIDEO_CONTAINER;
 // var LOCAL_VIDEO;
 
-// var CONSTRAINTS = { audio: true, video: true };
+var CONSTRAINTS = { audio: true, video: true };
 // var SCREEN_CONSTRAINTS = { video: { cursor: "always" }, audio: false };
 // var online_users = {};
 // var user_count = 0;
