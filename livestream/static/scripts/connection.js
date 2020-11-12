@@ -15,8 +15,6 @@ var initialize_connection = function () {
     getAllUsers(data["users"]);
   });
 
-  $("#debugger").text("STEP 2");
-
   SOCKET.on("call-made", async (data) => {
     console.log("call-made (making answer) " + data.socket);
     console.log(all_peers[data.socket]);
@@ -47,6 +45,4 @@ var initialize_connection = function () {
     console.log(getPeer["peerConnection"]);
     callUser(data.socket);
   });
-  
-  $("#debugger").text("STEP 4");
 };
