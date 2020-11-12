@@ -36,38 +36,38 @@ var HTML_Encode = function (not_encoded_string) {
   return result;
 };
 
-var send_message_flow = function () {
-  let filter_message = HTML_Encode($("#text_field").val());
-  let message = filter_message["filtered_message"];
-  let p_element = filter_message["object"];
-  if (message !== "") {
-    let li_element = document.createElement("li");
-    li_element.setAttribute("class", "own_message");
-    li_element.appendChild(p_element);
-    message_panel.appendChild(li_element);
-    $("#text_field").val("");
+// var send_message_flow = function () {
+//   let filter_message = HTML_Encode($("#text_field").val());
+//   let message = filter_message["filtered_message"];
+//   let p_element = filter_message["object"];
+//   if (message !== "") {
+//     let li_element = document.createElement("li");
+//     li_element.setAttribute("class", "own_message");
+//     li_element.appendChild(p_element);
+//     message_panel.appendChild(li_element);
+//     $("#text_field").val("");
 
-    message_holder.scrollTop = message_holder.scrollHeight;
+//     message_holder.scrollTop = message_holder.scrollHeight;
 
-    print("ALMOST SENDING MESSAGE");
-    socket.emit("send_message", message);
-    print("MESSAGE SENT!");
-  }
-};
+//     print("ALMOST SENDING MESSAGE");
+//     socket.emit("send_message", message);
+//     print("MESSAGE SENT!");
+//   }
+// };
 
-var receive_message_flow = function (message) {
-  let filter_message = HTML_skip_Encode(message);
-  message = filter_message["filtered_message"];
-  let p_element = filter_message["object"];
-  if (message !== "") {
-    let li_element = document.createElement("li");
-    li_element.setAttribute("class", "other_message");
-    li_element.appendChild(p_element);
-    message_panel.appendChild(li_element);
+// var receive_message_flow = function (message) {
+//   let filter_message = HTML_skip_Encode(message);
+//   message = filter_message["filtered_message"];
+//   let p_element = filter_message["object"];
+//   if (message !== "") {
+//     let li_element = document.createElement("li");
+//     li_element.setAttribute("class", "other_message");
+//     li_element.appendChild(p_element);
+//     message_panel.appendChild(li_element);
 
-    message_holder.scrollTop = message_holder.scrollHeight;
-  }
-};
+//     message_holder.scrollTop = message_holder.scrollHeight;
+//   }
+// };
 
 print("I'M JAVASCRIPT BITCH!");
 
