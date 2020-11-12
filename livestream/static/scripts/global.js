@@ -82,7 +82,9 @@ var peerConstructor = function (key) {
 };
 
 var initialize_midia = async function () {
-  await get_media();
+  try{
+    await get_media();
+  }catch(e){}
   initialize_connection();
 };
 
