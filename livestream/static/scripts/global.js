@@ -61,25 +61,30 @@ var peerConstructor = function (key) {
     var stream = $("#video-local")[0].srcObject;
     // stream.getTracks().forEach((track) => newPeerConnection.addTrack(track, stream));
     var camVideoTrack;
-    var videoSender = null;
+    var videoSender;
+    var camAudioTrack;
+    var audioSender;
     try{
       camVideoTrack = stream.getVideoTracks()[0];
+      camAudioTrack = stream.getAudioTracks()[0];
+      
       videoSender = newPeerConnection.addTrack(camVideoTrack, stream);
+      audioSender = newPeerConnection.addTrack(camAudioTrack, stream);
+      
+      newPeerConnection.ontrack = function ({ streams: [stream] }) {
+        var remoteVideo = all_peers[key]["htmlVideoObject"];
+        if (remoteVideo) {
+          console.log(all_peers[key]["htmlVideoObject"]);
+          console.log(stream);
+          remoteVideo.srcObject = stream;
+        }
+      };
+  
+      all_peers[key]["videoSender"] = videoSender;
+      all_peers[key]["audioSender"] = audioSender;
     }catch(e){}
-    var camAudioTrack = stream.getAudioTracks()[0];
-    var audioSender = newPeerConnection.addTrack(camAudioTrack, stream);
 
-    newPeerConnection.ontrack = function ({ streams: [stream] }) {
-      var remoteVideo = all_peers[key]["htmlVideoObject"];
-      if (remoteVideo) {
-        console.log(all_peers[key]["htmlVideoObject"]);
-        console.log(stream);
-        remoteVideo.srcObject = stream;
-      }
-    };
-
-    all_peers[key]["videoSender"] = videoSender;
-    all_peers[key]["audioSender"] = audioSender;
+    
   }
   return all_peers[key];
 };
