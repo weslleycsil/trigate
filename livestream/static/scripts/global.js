@@ -23,6 +23,7 @@ var removeUser = function (user_id) {
 };
 
 var getAllUsers = function (user_list) {
+  console.log(user_list)
   $.each(user_list, function (key, element) {
     insertUser(key);
     callUser(key);
