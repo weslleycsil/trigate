@@ -12,6 +12,8 @@ var initialize_connection = function () {
   });
 
   SOCKET.on("get-room-users", function (data) {
+    console.log(data)
+    console.log(SOCKET)
     getAllUsers(data["users"]);
   });
 
