@@ -45,16 +45,7 @@ var callUser = async function (user_id) {
 var peerConstructor = function (key) {
   if (!!!all_peers[key]) {
     var newPeerConnection = new RTCPeerConnection({
-      iceServers: [
-        {
-          urls: [
-            "stun:stun.l.google.com:19302",
-            "stun:stun1.l.google.com:19302",
-            "stun:stun2.l.google.com:19302",
-            "stun:stun.l.google.com:19302?transport=udp",
-          ],
-        },
-      ],
+      iceServers: [{ url: "stun:stun.l.google.com:19302?transport=udp" }],
     });
     var newObject = $.parseHTML(
       '<video id="video-' + key + '"  autoplay></video>'
