@@ -60,13 +60,12 @@ io.on("connection", function (socket) {
 });
 
 var initialize_socket = function (socket) {
+  socket.emit("get-room-users", {
+    users: active_users,
+  });
 
   socket.broadcast.emit("update-new-user", {
     user: socket.id,
-  });
-  
-  socket.emit("get-room-users", {
-    users: active_users,
   });
 
   active_users[socket.id] = "Alive";
