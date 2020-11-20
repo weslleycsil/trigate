@@ -60,6 +60,10 @@ io.on("connection", function (socket) {
 });
 
 var initialize_socket = function (socket) {
+  active_users[socket.id] = {
+    "video-stream": null,
+  };
+
   socket.emit("get-room-users", {
     users: active_users,
   });
@@ -67,8 +71,4 @@ var initialize_socket = function (socket) {
   socket.broadcast.emit("update-new-user", {
     user: socket.id,
   });
-
-  active_users[socket.id] = {
-    "video-stream": null,
-  };
 };
