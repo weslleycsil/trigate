@@ -25,8 +25,8 @@ var removeUser = function (user_id) {
 
 var getAllUsers = function (user_list) {
   $.each(user_list, function (user_id, element) {
-    // insertUser(key);
-    peerConstructor(user_id);
+    insertUser(user_id);
+    // peerConstructor(user_id);
   });
 };
 
