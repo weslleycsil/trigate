@@ -15,6 +15,7 @@ var cameraToggle = true;
 
 var insertUser = function (user_id) {
   peerConstructor(user_id);
+  callUser(key);
 };
 
 var removeUser = function (user_id) {
@@ -23,10 +24,9 @@ var removeUser = function (user_id) {
 };
 
 var getAllUsers = function (user_list) {
-  console.log(user_list)
-  $.each(user_list, function (key, element) {
-    insertUser(key);
-    callUser(key);
+  $.each(user_list, function (user_id, element) {
+    // insertUser(key);
+    peerConstructor(user_id);
   });
 };
 
