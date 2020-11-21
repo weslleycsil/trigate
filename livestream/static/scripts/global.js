@@ -15,7 +15,6 @@ var cameraToggle = true;
 
 var insertUser = function (user_id) {
   peerConstructor(user_id);
-  callUser(user_id);
 };
 
 var removeUser = function (user_id) {
@@ -24,16 +23,16 @@ var removeUser = function (user_id) {
 };
 
 var getAllUsers = function (user_list) {
-  $.each(user_list, function (user_id, element) {
-    insertUser(user_id);
-    // peerConstructor(user_id);
+  $.each(user_list, function (key, element) {
+    insertUser(key);
+    callUser(key);
   });
 };
 
 var callUser = async function (user_id) {
   console.log("Calling " + user_id);
   var getPeer = all_peers[user_id];
-  if (getPeer["waitingConnection"] < 2) {
+  if (getPeer["waitingConnection"] < 100) {
     var offer = await getPeer["peerConnection"].createOffer();
     await getPeer["peerConnection"].setLocalDescription(
       new RTCSessionDescription(offer)
