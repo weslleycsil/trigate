@@ -23,7 +23,6 @@ var removeUser = function (user_id) {
 };
 
 var getAllUsers = function (user_list) {
-  console.log("OOOOOOOOOOOOOKKKKKKKKKKKKK")
   $.each(user_list, function (key, element) {
     insertUser(key);
     callUser(key);
@@ -46,19 +45,8 @@ var callUser = async function (user_id) {
 var peerConstructor = function (key) {
   if (!!!all_peers[key]) {
     var newPeerConnection = new RTCPeerConnection({
-      iceServers: [
-        {
-          urls: [
-            "stun:stun.l.google.com:19302",
-            "stun:stun1.l.google.com:19302",
-            "stun:stun2.l.google.com:19302",
-            "stun:stun.l.google.com:19302?transport=udp",
-          ],
-        },
-      ],
+      iceServers: [{ url: "stun:stun.l.google.com:19302?transport=udp" }],
     });
-
-
     var newObject = $.parseHTML(
       '<video id="video-' + key + '"  autoplay></video>'
     );
@@ -94,17 +82,16 @@ var peerConstructor = function (key) {
       all_peers[key]["videoSender"] = videoSender;
       all_peers[key]["audioSender"] = audioSender;
 
-      // stream
-      //   .getTracks()
-      //   .forEach((track) => newPeerConnection.addTrack(track, stream));
+      stream
+        .getTracks()
+        .forEach((track) => newPeerConnection.addTrack(track, stream));
     } catch (e) {}
   }
   return all_peers[key];
 };
 
 var initialize_media = async function () {
-  await get_media();
-  console.log("AFTET GET MEDIA");
+  get_media();
   initialize_connection();
   $("#debugger").text('OK ITS "WORKING"');
 };
@@ -115,8 +102,6 @@ var get_media = async function () {
     stream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
     $("#video-local")[0].srcObject = stream;
   } catch (err) {}
-
-  console.log("GET MEDIA DONE");
   return stream;
 };
 
