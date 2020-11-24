@@ -90,7 +90,7 @@ var peerConstructor = function (key) {
   return all_peers[key];
 };
 
-var initialize_midia = async function () {
+var initialize_media = async function () {
   get_media();
   initialize_connection();
   $("#debugger").text('OK ITS "WORKING"');

@@ -6,5 +6,5 @@ $(function () {
   LOCAL_VIDEO = $("#local-video");
 
   $("#debugger").text("CALLING INITIALIZE");
-  initialize_midia();
+  initialize_media();
 });
