@@ -114,7 +114,9 @@ var get_media = async function () {
   try {
     stream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
     $("#video-local")[0].srcObject = stream;
-  } catch (err) {}
+  } catch (err) {
+    toggleMedia();
+  }
 
   console.log("GET MEDIA DONE");
   return stream;
@@ -125,7 +127,9 @@ var get_screen = async function () {
   try {
     stream = await navigator.mediaDevices.getDisplayMedia();
     $("#video-local")[0].srcObject = stream;
-  } catch (err) {}
+  } catch (err) {
+    alert("No Media Detected")
+  }
   return stream;
 };
 
