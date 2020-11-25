@@ -3,6 +3,9 @@ const path = require('path');
 const url = require('url');
 var httpServer = require('http');
 
+const key = fs.readFileSync("./key.pem");
+const cert = fs.readFileSync("./cert.pem");
+
 const ioServer = require('socket.io');
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
 
@@ -223,8 +226,8 @@ if (isUseHTTPs) {
     // See how to use a valid certificate:
     // https://github.com/muaz-khan/WebRTC-Experiment/issues/62
     var options = {
-        key: null,
-        cert: null,
+        key: key,
+        cert: cert,
         ca: null
     };
 
