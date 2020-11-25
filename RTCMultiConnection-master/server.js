@@ -35,7 +35,7 @@ server.listen(PORT, function () {
 // --------------------------
 // socket.io codes goes below
 
-ioServer(httpApp).on('connection', function(socket) {
+server.on('connection', function(socket) {
     RTCMultiConnectionServer.addSocket(socket, config);
 
     // ----------------------
