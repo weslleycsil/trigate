@@ -25,9 +25,7 @@
     <script src="/dev/getHTMLMediaElement.js"></script>
     <script>
       var roomid = "room-1";
-      var open_room = function () {
-        connection.open(roomid, function () {});
-      };
+      
 
       var connection = new RTCMultiConnection();
 
@@ -140,6 +138,9 @@
         }
       };
 
+      
+      console.log(connection.open(roomid, function () {}));
+
       if (roomid && roomid.length) {
         // document.getElementById("room-id").value = roomid;
         localStorage.setItem(connection.socketMessageEvent, roomid);
@@ -160,7 +161,7 @@
       }
 
       
-      open_room();
+      
     </script>
   </body>
 </html>
