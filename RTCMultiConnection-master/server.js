@@ -4,6 +4,9 @@
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
+const key = fs.readFileSync("./keys/key.pem");
+const cert = fs.readFileSync("./keys/cert.pem");
+
 var httpServer = require('http');
 
 const ioServer = require('socket.io');
@@ -226,8 +229,8 @@ if (isUseHTTPs) {
     // See how to use a valid certificate:
     // https://github.com/muaz-khan/WebRTC-Experiment/issues/62
     var options = {
-        key: null,
-        cert: null,
+        key: key,
+        cert: cert,
         ca: null
     };
 
