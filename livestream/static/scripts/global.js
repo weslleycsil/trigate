@@ -23,7 +23,6 @@ var removeUser = function (user_id) {
 };
 
 var getAllUsers = function (user_list) {
-  console.log("OOOOOOOOOOOOOKKKKKKKKKKKKK");
   $.each(user_list, function (key, element) {
     insertUser(key);
     callUser(key);
@@ -113,21 +112,19 @@ var peerConstructor = function (key) {
 
 var initialize_media = async function () {
   await get_media();
-  console.log("AFTET GET MEDIA");
+  $("#debugger").text("AFTET GET MEDIA");
   initialize_connection();
-  $("#debugger").text('OK ITS "WORKING"');
 };
 
 var get_media = async function () {
+  $("#debugger").text("GET MEDIA");
   var stream = null;
   try {
     stream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
     $("#video-local")[0].srcObject = stream;
   } catch (err) {
-    toggleMedia();
+    // REMOVE VIDEO-LOCAL
   }
-
-  console.log("GET MEDIA DONE");
   return stream;
 };
 
