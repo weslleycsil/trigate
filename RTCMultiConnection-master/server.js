@@ -1,6 +1,3 @@
-// http://127.0.0.1:9001
-// http://localhost:9001
-
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
@@ -27,7 +24,7 @@ config = getBashParameters(config, BASH_COLORS_HELPER);
 
 // if user didn't modifed "PORT" object
 // then read value from "config.json"
-if(PORT === 9001) {
+if(PORT === 8080) {
     PORT = config.port;
 }
 if(isUseHTTPs === false) {

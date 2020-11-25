@@ -4,7 +4,7 @@
   "homePage": "/demos/video-broadcasting.html",
   "socketMessageEvent": "RTCMultiConnection-Message",
   "socketCustomEvent": "RTCMultiConnection-Custom-Message",
-  "port": "9001",
+  "port": "8080",
   "enableLogs": "false",
   "autoRebootServerOnFailure": "false",
   "isUseHTTPs": "false",
