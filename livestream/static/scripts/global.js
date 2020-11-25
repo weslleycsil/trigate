@@ -23,7 +23,6 @@ var removeUser = function (user_id) {
 };
 
 var getAllUsers = function (user_list) {
-  console.log("OOOOOOOOOOOOOKKKKKKKKKKKKK")
   $.each(user_list, function (key, element) {
     insertUser(key);
     callUser(key);
@@ -48,16 +47,25 @@ var peerConstructor = function (key) {
     var newPeerConnection = new RTCPeerConnection({
       iceServers: [
         {
-          urls: [
-            "stun:stun.l.google.com:19302",
-            "stun:stun1.l.google.com:19302",
-            "stun:stun2.l.google.com:19302",
-            "stun:stun.l.google.com:19302?transport=udp",
+          'urls': [
+            "stun:g3ws.dev.br:3478",
+            "stun:g3ws.dev.br:5349",
+            "stun:g3ws.dev.br:3478?transport=udp",
+            "stun:g3ws.dev.br:5349?transport=udp",
           ],
+        },
+        {
+          'urls': [
+            "turn:g3ws.dev.br:3478",
+            "turn:g3ws.dev.br:5349",
+            "turn:g3ws.dev.br:3478?transport=udp",
+            "turn:g3ws.dev.br:5349?transport=udp"
+          ],
+          'username': "sirrenan",
+          'credential': "re123123"
         },
       ],
     });
-
 
     var newObject = $.parseHTML(
       '<video id="video-' + key + '"  autoplay></video>'
@@ -104,21 +112,19 @@ var peerConstructor = function (key) {
 
 var initialize_media = async function () {
   await get_media();
-  console.log("AFTET GET MEDIA");
+  $("#debugger").text("AFTET GET MEDIA");
   initialize_connection();
-  $("#debugger").text('OK ITS "WORKING"');
 };
 
 var get_media = async function () {
+  $("#debugger").text("GET MEDIA");
   var stream = null;
   try {
     stream = await navigator.mediaDevices.getUserMedia(CONSTRAINTS);
     $("#video-local")[0].srcObject = stream;
   } catch (err) {
-    toggleMedia();
+    // REMOVE VIDEO-LOCAL
   }
-
-  console.log("GET MEDIA DONE");
   return stream;
 };
 
@@ -128,7 +134,7 @@ var get_screen = async function () {
     stream = await navigator.mediaDevices.getDisplayMedia();
     $("#video-local")[0].srcObject = stream;
   } catch (err) {
-    alert("No Media Detected")
+    alert("No Media Detected");
   }
   return stream;
 };
