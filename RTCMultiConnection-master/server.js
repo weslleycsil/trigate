@@ -33,9 +33,7 @@ config = getBashParameters(config, BASH_COLORS_HELPER);
 if(PORT === 9001) {
     PORT = config.port;
 }
-if(isUseHTTPs === false) {
-    isUseHTTPs = config.isUseHTTPs;
-}
+
 
 function serverHandler(request, response) {
     // to make sure we always get valid info from json file
@@ -236,36 +234,9 @@ if (isUseHTTPs) {
 
     var pfx = false;
 
-    if (!fs.existsSync(config.sslKey)) {
-        console.log(BASH_COLORS_HELPER.getRedFG(), 'sslKey:\t ' + config.sslKey + ' does not exist.');
-    } else {
-        pfx = config.sslKey.indexOf('.pfx') !== -1;
-        options.key = fs.readFileSync(config.sslKey);
-    }
-
-    if (!fs.existsSync(config.sslCert)) {
-        console.log(BASH_COLORS_HELPER.getRedFG(), 'sslCert:\t ' + config.sslCert + ' does not exist.');
-    } else {
-        options.cert = fs.readFileSync(config.sslCert);
-    }
-
-    if (config.sslCabundle) {
-        if (!fs.existsSync(config.sslCabundle)) {
-            console.log(BASH_COLORS_HELPER.getRedFG(), 'sslCabundle:\t ' + config.sslCabundle + ' does not exist.');
-        }
-
-        options.ca = fs.readFileSync(config.sslCabundle);
-    }
-
-    if (pfx === true) {
-        options = {
-            pfx: sslKey
-        };
-    }
-
+    options.key = key;
+    options.cert = cert;
     httpApp = httpServer.createServer(options, serverHandler);
-} else {
-    httpApp = httpServer.createServer(serverHandler);
 }
 
 RTCMultiConnectionServer.beforeHttpListen(httpApp, config);
