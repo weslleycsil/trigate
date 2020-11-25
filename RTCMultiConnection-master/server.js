@@ -237,13 +237,13 @@ if (isUseHTTPs) {
         console.log(BASH_COLORS_HELPER.getRedFG(), 'sslKey:\t ' + config.sslKey + ' does not exist.');
     } else {
         pfx = config.sslKey.indexOf('.pfx') !== -1;
-        options.key = fs.readFileSync(config.sslKey);
+        options.key = key;
     }
 
     if (!fs.existsSync(config.sslCert)) {
         console.log(BASH_COLORS_HELPER.getRedFG(), 'sslCert:\t ' + config.sslCert + ' does not exist.');
     } else {
-        options.cert = fs.readFileSync(config.sslCert);
+        options.cert = cert;
     }
 
     if (config.sslCabundle) {
