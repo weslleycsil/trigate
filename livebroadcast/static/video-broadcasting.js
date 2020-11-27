@@ -1,6 +1,19 @@
 var CONNECTION;
 var ROOM_ID;
 
+
+var reCheckRoomPresence = function () {
+  console.log("CHECKING ROOM PRESENCE");
+  CONNECTION.checkPresence(ROOM_ID, function (isRoomExist) {
+    console.log(isRoomExist);
+    if (isRoomExist) {
+      CONNECTION.join(ROOM_ID);
+      return;
+    }
+    setTimeout(reCheckRoomPresence, 5000);
+  });
+};
+
 var setup_connection = function () {
   CONNECTION = new RTCMultiConnection();
   CONNECTION.socketURL = "/";
@@ -108,15 +121,6 @@ var setup_connection = function () {
   reCheckRoomPresence();
 };
 
-var reCheckRoomPresence = function () {
-  CONNECTION.checkPresence(ROOM_ID, function (isRoomExist) {
-    if (isRoomExist) {
-      CONNECTION.join(ROOM_ID);
-      return;
-    }
-    setTimeout(reCheckRoomPresence, 5000);
-  });
-};
 
 var setup_room = function () {
   ROOM_ID = getUrlParameter("room-id");
