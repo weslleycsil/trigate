@@ -153,7 +153,7 @@ var initialize = function () {
   ROOM_ID = getUrlParameter("room-id");
   setup_connection();
   setup_room();
-  reCheckRoomPresence();
+  setTimeout(function(){reCheckRoomPresence()},10000);
 };
 
 initialize();
