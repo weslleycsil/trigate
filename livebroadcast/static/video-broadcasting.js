@@ -116,7 +116,7 @@ var setup_room = function () {
         OfferToReceiveVideo: true,
       };
       
-      reCheckRoomPresence();
+      // reCheckRoomPresence();
     }
   });
 };
