@@ -2,18 +2,6 @@ var CONNECTION;
 var ROOM_ID;
 
 
-var reCheckRoomPresence = function () {
-  console.log("CHECKING ROOM PRESENCE");
-  CONNECTION.checkPresence(ROOM_ID, function (isRoomExist) {
-    console.log(isRoomExist);
-    if (isRoomExist) {
-      CONNECTION.join(ROOM_ID);
-      return;
-    }
-    setTimeout(reCheckRoomPresence, 5000);
-  });
-};
-
 var setup_connection = function () {
   CONNECTION = new RTCMultiConnection();
   CONNECTION.socketURL = "/";
@@ -117,13 +105,10 @@ var setup_connection = function () {
       CONNECTION.join(CONNECTION.sessionid);
     }
   };
-
-  reCheckRoomPresence();
 };
 
 
 var setup_room = function () {
-  ROOM_ID = getUrlParameter("room-id");
   CONNECTION.openOrJoin(ROOM_ID, function (isRoomExist, ROOM_ID) {
     if (isRoomExist) {
       CONNECTION.sdpConstraints.mandatory = {
@@ -131,6 +116,17 @@ var setup_room = function () {
         OfferToReceiveVideo: true,
       };
     }
+  });
+};
+
+var reCheckRoomPresence = function () {
+  CONNECTION.checkPresence(ROOM_ID, function (isRoomExist) {
+    console.log(isRoomExist);
+    if (isRoomExist) {
+      CONNECTION.join(ROOM_ID);
+      return;
+    }
+    setTimeout(reCheckRoomPresence, 5000);
   });
 };
 
@@ -151,22 +147,11 @@ var getUrlParameter = function getUrlParameter(sParam) {
   }
 };
 
-var reconnect = function () {
-  setTimeout(function () {
-    console.log("TRYING TO RECONNECT");
-    connection.sdpConstraints.mandatory = {
-      OfferToReceiveAudio: true,
-      OfferToReceiveVideo: true,
-    };
-    console.log(connection.join(ROOM_ID));
-    console.log("RECONNECT PERFORMED");
-    // reconnect();
-  }, 5000);
-};
-
 var initialize = function () {
+  ROOM_ID = getUrlParameter("room-id");
   setup_connection();
   setup_room();
+  reCheckRoomPresence();
 };
 
 initialize();
