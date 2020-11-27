@@ -1,7 +1,6 @@
 var CONNECTION;
 var ROOM_ID;
 
-
 var setup_connection = function () {
   CONNECTION = new RTCMultiConnection();
   CONNECTION.socketURL = "/";
@@ -107,15 +106,17 @@ var setup_connection = function () {
   };
 };
 
-
 var setup_room = function () {
   CONNECTION.openOrJoin(ROOM_ID, function (isRoomExist, ROOM_ID) {
+    if (isRoomExist === false && CONNECTION.isInitiator === true) {
+      showRoomURL(ROOM_ID);
+    }
     if (isRoomExist) {
       CONNECTION.sdpConstraints.mandatory = {
         OfferToReceiveAudio: true,
         OfferToReceiveVideo: true,
       };
-      
+
       // reCheckRoomPresence();
     }
   });
