@@ -115,6 +115,8 @@ var setup_room = function () {
         OfferToReceiveAudio: true,
         OfferToReceiveVideo: true,
       };
+      
+      reCheckRoomPresence();
     }
   });
 };
@@ -151,7 +153,6 @@ var initialize = function () {
   ROOM_ID = getUrlParameter("room-id");
   setup_connection();
   setup_room();
-  reCheckRoomPresence();
 };
 
 initialize();
