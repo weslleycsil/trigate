@@ -38,10 +38,11 @@ var create_room_cards = function (users_data, user_rooms) {
     already_subscribed = user_rooms.indexOf(room_index) >= 0;
 
     if (already_subscribed) {
-      let bet_button_element = $.parseHTML(JOIN_ROOM_BUTTON);
-      $(new_card).find("#button-holder").append(bet_button_element);
-      $(bet_button_element).on("click", function () {
-        change_page("RoomPanel", room_index);
+      let join_room_button_element = $.parseHTML(JOIN_ROOM_BUTTON);
+      $(new_card).find("#button-holder").append(join_room_button_element);
+      $(join_room_button_element).on("click", function () {
+        let socket_room_id = users_data["rooms"][room_index]["socket_id"];
+        change_page("RoomPanel", socket_room_id);
       });
     } else {
       let subscribe_button_element = $.parseHTML(SUBSCRIBE_BUTTON);

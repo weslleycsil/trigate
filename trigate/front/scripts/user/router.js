@@ -16,7 +16,7 @@ var change_page = function (page, optional_attr) {
       after_load = function () {};
       break;
     case "FinishRegisterFlow":
-      localStorage.removeItem("optional_attr");
+      clean_session();
       localStorage.setItem("last_page", "Login");
       hide_menu();
       change_route("Login");
@@ -34,6 +34,7 @@ var change_page = function (page, optional_attr) {
       break;
     case "RoomPanel":
       localStorage.setItem("last_page", "RoomPanel");
+      store_optional_attr("room-id",optional_attr);
       show_menu();
       change_route("RoomPanel");
       after_load = function () {
