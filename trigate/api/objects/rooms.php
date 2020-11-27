@@ -9,6 +9,7 @@ class Rooms
 
     // object properties
     private $id;
+    private $socket_id;
     private $name;
     private $description;
 

@@ -79,8 +79,7 @@ var populate_rooms = function () {
       Authorization: "Bearer " + stored_token,
     },
     success: function (data) {
-      user_rooms =  data;
-      console.log(data)
+      user_rooms = data;
       $.ajax({
         type: "GET",
         url: api_base_url + "/rooms/get_rooms",
