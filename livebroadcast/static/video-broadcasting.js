@@ -67,11 +67,9 @@ var setup_connection = function () {
 
     CONNECTION.videosContainer.appendChild(mediaElement);
 
-    // setTimeout(function () {
-    //   try{
-    //   mediaElement.media.play();
-    //   }catch(e){}
-    // }, 5000);
+    setTimeout(function () {
+      mediaElement.media.play();
+    }, 5000);
 
     mediaElement.id = event.streamid;
   };
