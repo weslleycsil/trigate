@@ -116,7 +116,6 @@ var setup_room = function () {
         OfferToReceiveAudio: true,
         OfferToReceiveVideo: true,
       };
-      reCheckRoomPresence();
     }
   });
 };
