@@ -222,6 +222,9 @@ var httpApp;
 
 if (isUseHTTPs) {
     httpServer = require('https');
+
+    // See how to use a valid certificate:
+    // https://github.com/muaz-khan/WebRTC-Experiment/issues/62
     var options = {
         key: fs.readFileSync("./key.pem"),
         cert: fs.readFileSync("./cert.pem"),
