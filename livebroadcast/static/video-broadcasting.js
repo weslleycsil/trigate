@@ -121,8 +121,9 @@ var setup_room = function () {
 };
 
 var reCheckRoomPresence = function () {
+  console.log("CHECKING")
   CONNECTION.checkPresence(ROOM_ID, function (isRoomExist) {
-    console.log(isRoomExist);
+    console.log(isRoomExist)
     if (isRoomExist) {
       CONNECTION.join(ROOM_ID);
       return;
@@ -152,6 +153,7 @@ var initialize = function () {
   ROOM_ID = getUrlParameter("room-id");
   setup_connection();
   setup_room();
+  reCheckRoomPresence();
 };
 
 initialize();
