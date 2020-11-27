@@ -34,12 +34,17 @@ var change_page = function (page, optional_attr) {
       break;
     case "RoomPanel":
       localStorage.setItem("last_page", "RoomPanel");
-      store_optional_attr("room-id",optional_attr);
+      if (optional_attr) {
+        store_optional_attr("room-id", optional_attr["room-id"]);
+        store_optional_attr(
+          "room-display-name",
+          optional_attr["room-display-name"]
+        );
+      } 
       show_menu();
       change_route("RoomPanel");
       after_load = function () {
         populate_room_painel();
       };
-      break;
   }
 };

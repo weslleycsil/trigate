@@ -11,7 +11,8 @@ var SCREENS = [
 var CURRENT_SCREEN = 0;
 
 var populate_room_painel = function () {
-  $("#broadcast-frame-holder").attr("src", "https://g3ws.dev.br:8080" + get_optional_attr_object("room-id"));
+  $("#room-name").text("Sala" + get_optional_attr("room-display-name"))
+  $("#broadcast-frame-holder").attr("src", "https://g3ws.dev.br:8080?room-id=" + get_optional_attr("room-id"));
   $(SCREENS[(CURRENT_SCREEN + 1) % 2]["object"]).hide();
   $("#button-toggle-screen").text(SCREENS[CURRENT_SCREEN]["name"]);
 

@@ -120,6 +120,8 @@ Documentation - github.com/muaz-khan/WebRTC-Experiment/tree/master/getMediaEleme
 
 .media-box video {
     width: 100%;
+    height: 100%;
+    max-height: unset !important;
     vertical-align: top;
     object-fit: fill;
 }

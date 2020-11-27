@@ -426,6 +426,13 @@ h6 {
   background: white;
 }
 
+.camera-holder{
+  width: 100%;
+  height: 65vh;    
+  border: unset;
+  background: #00000000;
+}
+
 
 @-webkit-keyframes grow {
   0% {
