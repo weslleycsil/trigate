@@ -163,3 +163,12 @@ input[type="range"]::-webkit-slider-thumb {
     width: 10px;
     height: 26px;
 }
+
+
+.media-container{
+    width: 100vw !important;
+    border: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    background: black !important;
+}
