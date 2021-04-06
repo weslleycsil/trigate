@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 
-var base_url = "https://www.trigate.generalwebsolutions.com.br";
+var base_url = "https://ufsc3d.inf.ufsc.br/VirtualClass";
 var api_base_url = base_url + "/api";
 var gallery_base_url = base_url + "/gallery/";
 
