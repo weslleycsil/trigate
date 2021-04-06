@@ -2,12 +2,15 @@
 class Database
 {
     private $host = "localhost";
-    private $db_name = "gener890_trigate";
-    private $username = "gener890_trigate_master";
-    private $password = "trigateMaster";
-    // private $db_name = "trigate";
-    // private $username = "root";
-    // private $password = "";
+
+    private $db_name = "ufsc3d";
+    private $username = "developer3";
+    private $password = "developer3";
+
+    // private $db_name = "gener890_trigate";
+    // private $username = "gener890_trigate_master";
+    // private $password = "trigateMaster";
+    
     private $charset = "utf8";
     public $conn;
 
