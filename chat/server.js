@@ -9,7 +9,6 @@ const cert = fs.readFileSync('./cert.pem');
 
 const https = require("https");
 
-var http = require("http");
 var path = require("path");
 const { connected } = require("process");
 var socketIO = require("socket.io");

@@ -87,12 +87,13 @@ var populate_rooms = function () {
       Authorization: "Bearer " + stored_token,
     },
     success: function (data) {
-      user_rooms = data;
+      user_rooms = $.parseJSON(data);
       $.ajax({
         type: "GET",
         url: api_base_url + "/rooms/get_rooms",
         contentType: "application/json",
         success: function (data_rooms) {
+          data_rooms = $.parseJSON(data_rooms)
           console.log(data_rooms);
           create_room_cards(data_rooms, user_rooms);
         },
