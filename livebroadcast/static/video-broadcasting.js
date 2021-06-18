@@ -108,6 +108,8 @@ var setup_connection = function () {
 
 var setup_room = function () {
   CONNECTION.openOrJoin(ROOM_ID, function (isRoomExist, ROOM_ID) {
+    console.log("RESULT")
+    console.log(CONNECTION)
     if (isRoomExist === false && CONNECTION.isInitiator === true) {
       showRoomURL(ROOM_ID);
     }
@@ -121,9 +123,9 @@ var setup_room = function () {
 };
 
 var reCheckRoomPresence = function () {
-  console.log("CHECKING")
+  console.log("CHECKING");
   CONNECTION.checkPresence(ROOM_ID, function (isRoomExist) {
-    console.log(isRoomExist)
+    console.log(isRoomExist);
     if (isRoomExist) {
       CONNECTION.join(ROOM_ID);
       return;
@@ -150,10 +152,12 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 var initialize = function () {
+  console.log("STARTING");
+  document.getElementById("start-button").style.display = "none";
   ROOM_ID = getUrlParameter("room-id");
   setup_connection();
   setup_room();
-  setTimeout(function(){reCheckRoomPresence()},10000);
+  // setTimeout(function () {
+  //   reCheckRoomPresence();
+  // }, 5000);
 };
-
-initialize();
