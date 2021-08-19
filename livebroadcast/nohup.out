@@ -1,0 +1,27 @@
+
+
+Socket.io is listening at:
+[32m	https://localhost:8080/[0m
+Your web-browser (HTML file) MUST set this line:
+[32m	connection.socketURL = "https://localhost:8080/";[0m
+For more help:  [33mnode server.js --help[0m
+
+
+
+
+Socket.io is listening at:
+[32m	https://localhost:8080/[0m
+Your web-browser (HTML file) MUST set this line:
+[32m	connection.socketURL = "https://localhost:8080/";[0m
+For more help:  [33mnode server.js --help[0m
+
+
+
+
+Socket.io is listening at:
+[32m	https://localhost:8080/[0m
+Your web-browser (HTML file) MUST set this line:
+[32m	connection.socketURL = "https://localhost:8080/";[0m
+For more help:  [33mnode server.js --help[0m
+
+
