@@ -223,9 +223,10 @@ var httpApp;
 if (isUseHTTPs) {
     httpServer = require('https');
     var options = {
-        key: fs.readFileSync("/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/privkey.pem"),
-        cert: fs.readFileSync("/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/cert.pem"),
-        ca: null
+        key: key,
+        cert: cert,
+        ca: null,
+	maxHttpBufferSize: 1e8
     };
 
 
