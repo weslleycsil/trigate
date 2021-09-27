@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/static/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="/static/css/bootstrap/stylish-portfolio.min.css"
+      rel="stylesheet"
+    />
+    <link href="/static/styles/chat_style.css" rel="stylesheet" />
+    <title>Trigate-Pigeon</title>
+  </head>
+  <body>
+    <div id="app_holder">
+      <div id="message_holder">
+        <ul id="messages"></ul>
+      </div>
+      <div id="panel_holder">
+        <div class="container-fluid m-0 h100">
+          <div class="row h100">
+            <div class="col-10 p-0 m-0">
+              <input id="text_field" />
+            </div>
+            <div class="col-2 p-0 m-0">
+              <button id="send_button">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/static/lib/jquery/jquery-3.4.1.min.js"></script>
+  <script src="/static/lib/bootstrap/popper.min.js"></script>
+  <script src="/static/lib/bootstrap/bootstrap.min.js"></script>
+  <script src="/static/lib/bootstrap/bootstrap_starter.js"></script>
+  <script src="/static/lib/jquery/jquery.easing.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/static/scripts/index.js"></script>
+</html>

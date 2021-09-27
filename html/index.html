@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- THIRD PARTY LIBRARIES STYLE -->
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap/stylish-portfolio.min.css" rel="stylesheet" />
+    <link href="css/dragndrop/dragndrop.css" rel="stylesheet" />
+    <link href="css/aos/aos.css" rel="stylesheet" />
+
+    <!-- THEME STYLE -->
+    <link
+      href="https://generalwebsolutions.com.br/ELC-Easy-Constructor-Framework/dist/css/theme/theme_color_setup.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://generalwebsolutions.com.br/ELC-Easy-Constructor-Framework/dist/css/theme/theme_typography.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://generalwebsolutions.com.br/ELC-Easy-Constructor-Framework/dist/css/theme/theme_style.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://generalwebsolutions.com.br/ELC-Easy-Constructor-Framework/dist/css/theme/objects_style.css"
+      rel="stylesheet"
+    />
+
+    <!-- OPTIONAL -->
+    <!-- USER STYLES | SUGGESTED STRUCTURE -->
+    <link href="css/user/user_color_setup.css" rel="stylesheet" />
+    <link href="css/user/user_objects_style.css" rel="stylesheet" />
+    <link href="css/user/user_style.css" rel="stylesheet" />
+    <script
+      src="lib/fontawesome/fontawesome.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>G3WS - Trigate - 1.0v</title>
+  </head>
+
+  <body id="module-wrapper">
+    <div id="menu-viewer">
+      <div class="menu">
+        <div class="logo-trigate menu-logo" onclick="change_page('Courses')"></div>
+        <div class="menu-header-content">
+          <div
+            class="menu-button"
+            id="menu-button"
+            onclick="toggle_menu_box()"
+          ></div>
+        </div>
+        <div class="user-pic"></div>
+        <div class="menu-box" id="menu-box">
+          <!-- <div class="menu-item head">
+            Perfil <span style="font-size: 9px">(Não implementado ainda)</span>
+          </div>
+          <div class="menu-item" onclick="change_page('Courses')">Cursos</div> -->
+          <button
+            type="button"
+            class="btn btn-black fluid-button btn-sm w-100 mt-1"
+            onclick="logout()"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="content-viewer"></div>
+    <div id="preloader-viewer"></div>
+  </body>
+
+  <!-- THIRD PARTY LIBRARIES -->
+  <script src="lib/jquery/jquery-3.4.1.min.js"></script>
+  <script src="lib/bootstrap/popper.min.js"></script>
+  <script src="lib/bootstrap/bootstrap.min.js"></script>
+  <script src="lib/bootstrap/bootstrap_starter.js"></script>
+  <script src="lib/jquery/jquery.easing.min.js"></script>
+  <script src="lib/lodash/lodash.js"></script>
+  <script src="lib/dragndrop/dragndrop.js"></script>
+  <script src="lib/aos/aos.js"></script>
+
+  <!-- Theme scripts -->
+  <script src="https://generalwebsolutions.com.br/ELC-Easy-Constructor-Framework/dist/scripts/theme/global_elements_map.js"></script>
+  <script src="https://generalwebsolutions.com.br/ELC-Easy-Constructor-Framework/dist/scripts/theme/objects_loader.js"></script>
+  <script src="https://generalwebsolutions.com.br/ELC-Easy-Constructor-Framework/dist/scripts/theme/theme_starter.js"></script>
+  <script src="https://generalwebsolutions.com.br/ELC-Easy-Constructor-Framework/dist/scripts/theme/menu_loader.js"></script>
+
+  <!-- User scripts -->
+  <script src="scripts/user/global.js"></script>
+  <script src="scripts/user/account_methods.js"></script>
+  <script src="scripts/user/rooms.js"></script>
+  <script src="scripts/user/room_painel.js"></script>
+  <script src="scripts/user/router.js"></script>
+  <script src="scripts/user/ready.js"></script>
+</html>

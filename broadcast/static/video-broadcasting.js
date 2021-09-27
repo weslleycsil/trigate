@@ -7,7 +7,8 @@ var setup_connection = function () {
   CONNECTION.socketMessageEvent = "video-broadcast";
   CONNECTION.session = {
     audio: true,
-    screen: true,
+    video: true,
+    screen: false,
     oneway: true,
   };
   CONNECTION.sdpConstraints.mandatory = {

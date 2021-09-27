@@ -4944,7 +4944,7 @@ var RTCMultiConnection = function (roomid, forceOptions) {
       callback = callback || function () {};
 
       connection.checkPresence(roomid, function (isRoomExist, roomid) {
-        if (isRoomExist) {
+	 if (isRoomExist) {
           connection.sessionid = roomid;
 
           var localPeerSdpConstraints = false;
@@ -4985,19 +4985,19 @@ var RTCMultiConnection = function (roomid, forceOptions) {
           });
           return;
         }
-
         connection.waitingForLocalMedia = true;
         connection.isInitiator = true;
 
         connection.sessionid = roomid || connection.sessionid;
-
+	console.log(roomid);
+	console.log(connection.session);
         if (isData(connection.session)) {
-          openRoom(callback);
+         openRoom(callback);
           return;
         }
 
         connection.captureUserMedia(function () {
-          openRoom(callback);
+	  openRoom(callback);
         });
       });
     };

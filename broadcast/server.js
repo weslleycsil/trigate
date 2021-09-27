@@ -3,8 +3,8 @@ const path = require('path');
 const url = require('url');
 var httpServer = require('http');
 
-const key = fs.readFileSync("./key.pem");
-const cert = fs.readFileSync("./cert.pem");
+const key = fs.readFileSync("/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/privkey.pem");
+const cert = fs.readFileSync("/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/cert.pem");
 
 const ioServer = require('socket.io');
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
@@ -223,8 +223,8 @@ var httpApp;
 if (isUseHTTPs) {
     httpServer = require('https');
     var options = {
-        key: fs.readFileSync("./key.pem"),
-        cert: fs.readFileSync("./cert.pem"),
+        key: fs.readFileSync("/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/privkey.pem"),
+	cert: fs.readFileSync("/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/cert.pem"),
         ca: null
     };
 
