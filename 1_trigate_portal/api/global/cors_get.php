@@ -2,9 +2,9 @@
 if (isset($_SERVER["HTTP_ORIGIN"]) === true) {
     $origin = $_SERVER["HTTP_ORIGIN"];
     $allowed_origins = array(
-        "https://www.trigate.generalwebsolutions.com.br",
-        "https://trigate.generalwebsolutions.com.br",
-        "www.trigate.generalwebsolutions.com.br"
+        "https://www.trigate.com",
+        "https://trigate.com",
+        "www.trigate.com"
     );
     if (in_array($origin, $allowed_origins, true) === true) {
         header('Access-Control-Allow-Origin: *');

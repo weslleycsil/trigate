@@ -11,7 +11,7 @@ var SCREENS = [
 var CURRENT_SCREEN = 0;
 
 var start_presentation = function(){
-  let current_url_room = "https://ufsc3d.inf.ufsc.br:8080?room-id=" + get_optional_attr("room-id");
+  let current_url_room = "https://trigate.com:8080?room-id=" + get_optional_attr("room-id");
   window.open(current_url_room);
 }
 
@@ -21,7 +21,7 @@ var populate_room_painel = function () {
   //$("#broadcast-frame-holder").attr("src", "https://ufsc3d.inf.ufsc.br:8080?room-id=" + get_optional_attr("room-id"));
   //$("#broadcast-frame-holder").attr("src", "https://test.webrtc.org/");
 
-  let current_url_room = "https://ufsc3d.inf.ufsc.br:8080?room-id=" + get_optional_attr("room-id");
+  let current_url_room = "https://trigate.com:8080?room-id=" + get_optional_attr("room-id");
   let iframe_video = '\
   	<iframe class="camera-holder"\
   		id="broadcast-frame-holder"\

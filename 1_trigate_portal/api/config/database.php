@@ -3,9 +3,9 @@ class Database
 {
     private $host = "localhost";
 
-    private $db_name = "ufsc3d";
-    private $username = "developer3";
-    private $password = "developer3";
+    private $db_name = "trigate";
+    private $username = "root";
+    private $password = "admin1105";
     
     private $charset = "utf8";
     public $conn;

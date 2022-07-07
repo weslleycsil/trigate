@@ -4,11 +4,11 @@ var PORT = 3000;
 
 var express = require("express");
 const fs = require('fs');
-const key = fs.readFileSync('/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/privkey.pem');
-const cert = fs.readFileSync('/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/cert.pem');
+//const key = fs.readFileSync('/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/privkey.pem');
+//const cert = fs.readFileSync('/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/cert.pem');
 
-// const key = fs.readFileSync('key.pem');
-// const cert = fs.readFileSync('cert.pem');
+const key = fs.readFileSync('key.pem');
+const cert = fs.readFileSync('cert.pem');
 
 const https = require("https");
 

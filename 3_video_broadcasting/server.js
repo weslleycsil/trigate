@@ -3,8 +3,9 @@ const path = require('path');
 const url = require('url');
 var httpServer = require('http');
 
-const key = fs.readFileSync("/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/privkey.pem");
-const cert = fs.readFileSync("/etc/letsencrypt/live/ufsc3d.inf.ufsc.br/cert.pem");
+//const key = fs.readFileSync("/etc/ssl/private/apache-selfsigned.key");
+//const cert = fs.readFileSync("/etc/ssl/certs/apache-selfsigned.crt");
+
 
 //const key = fs.readFileSync("key.pem");
 //const cert = fs.readFileSync("cert.pem");
@@ -226,8 +227,8 @@ var httpApp;
 if (isUseHTTPs) {
     httpServer = require('https');
     var options = {
-        key: fs.readFileSync(key),
-		cert: fs.readFileSync(cert),
+        key: fs.readFileSync('./key.pem'),
+		cert: fs.readFileSync('./cert.pem'),
         ca: null
     };
 
