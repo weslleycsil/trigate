@@ -19,7 +19,7 @@ float OPAQUE = 1.0;
 
 SendChat ( string name, string message )
 {
-    list json = ["username",name + "", "message", message + "", "register", "false"];
+    list json = ["username",name + "", "message", message + "", "chat", salaAula+"","register", "false"];
     http_request_id = llHTTPRequest ( URL_CHAT, 
     [ HTTP_METHOD, "POST", 
     HTTP_MIMETYPE, "application/json",
