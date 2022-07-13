@@ -78,8 +78,8 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `socket_id`, `name`, `description`, `cover_image`) VALUES
-(1, 'vctc101', 'V-CTC 101', 'A sala de aula Virtual CTC 101 é uma sala preparada para comportar até 20 alunos.\r\n', 'vctc_101.jpg'),
-(2, 'vctc102', 'V-CTC 102', 'A sala Virtual CTC 102 é uma sala grande e pode comportar até 100 pessoas.', 'vctc_102.jpg');
+(1, '101', 'V-CTC 101', 'A sala de aula Virtual CTC 101 é uma sala preparada para comportar até 20 alunos.\r\n', 'vctc_101.jpg'),
+(2, '102', 'V-CTC 102', 'A sala Virtual CTC 102 é uma sala grande e pode comportar até 100 pessoas.', 'vctc_102.jpg');
 
 -- --------------------------------------------------------
 
