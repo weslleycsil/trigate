@@ -29,9 +29,15 @@ var populate_room_painel = function () {
 		allow="display-capture *; camera *; microphone *; fullscreen *"\
 	</iframe>';
 
+  let iframe_chat = '\
+    <iframe class="chat-holder chato"\
+    src="https://localhost:3000/?chat='+ get_optional_attr("room-id") +'&user=weslley\
+  ></iframe>';
+
 
 
   $("#camera-holder").append(iframe_video);
+  $("#chat-holder").append(iframe_chat);
 //  $("#broadcast-frame-holder").attr("allowusermedia", true);
 //  $("#broadcast-frame-holder").attr("allow", "autoplay * ; playsinline * ; camera * ; microphone * ; fullscreen *");
 
