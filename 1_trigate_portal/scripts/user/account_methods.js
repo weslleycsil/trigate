@@ -55,6 +55,7 @@ var login = function () {
       let token = data["token"];
       stored_token = token;
       localStorage.setItem("token", token);
+      localStorage.setItem("username",user);
       get_optional_attr_object();
       change_page(root_page);
     },

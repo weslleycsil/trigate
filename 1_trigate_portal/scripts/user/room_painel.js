@@ -29,9 +29,11 @@ var populate_room_painel = function () {
 		allow="display-capture *; camera *; microphone *; fullscreen *"\
 	</iframe>';
 
+  //recuperar username
+  let userLogin = localStorage.getItem("username");
   let iframe_chat = '\
     <iframe class="chat-holder chato"\
-    src="https://localhost:3000/?chat='+ get_optional_attr("room-id") +'&user=weslley\
+    src="https://localhost:3000/?chat='+ get_optional_attr("room-id") +'&user='+ userLogin +'"\
   ></iframe>';
 
 
