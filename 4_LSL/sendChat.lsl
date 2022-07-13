@@ -1,37 +1,50 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////        SCRIPT Para o envio de mensagens gerais na sala virtual                //////////////////////////
+/////////////////////        ele envia automaticamente todas as mensagens do canal para             //////////////////////////
+/////////////////////        a sala do chat com a identificação do usuario que as enviou            //////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //Variaveis nao editaveis
-key REQUEST_KEY;
 integer listenHandle;
+key http_request_id;
 
 //variaveis editaveis
-string URL_CHAT = "";
-integer salaAula = 0;
-
-
-
+string URL_CHAT = "https://trigate.twcreativs.com.br/message";
+integer salaAula = 101;
 
 //Informações de cor/opacidade do texto
-vector BLUE = < 0.0, 0.5, 1.0>;
+vector RED = < 0.65, 0, 0>;
 float OPAQUE = 1.0;
 
+SendChat ( string name, string message )
+{
+    list json = ["username",name + "", "message", message + "", "register", "false"];
+    http_request_id = llHTTPRequest ( URL_CHAT, 
+    [ HTTP_METHOD, "POST", 
+    HTTP_MIMETYPE, "application/json",
+    HTTP_VERIFY_CERT,TRUE,
+    HTTP_VERBOSE_THROTTLE, TRUE,
+    HTTP_PRAGMA_NO_CACHE, TRUE ],llList2Json(JSON_OBJECT, json));
+}
 
-default {
+
+default
+{
     state_entry()
     {
         //texto
-        llSetText ( "Clique para entrar na Sala", BLUE, OPAQUE );
+        llSetText ( "Para enviar uma mensagem digite /" + salaAula + " seguido de sua mensagem", RED, OPAQUE );
 
         //ouvir o channel da sala de aula
-        listenHandle = llListen(0, "", llGetOwner(), "");
+        listenHandle = llListen(salaAula, "", "", "");
     }
 
     listen(integer channel, string name, key id, string message)
     {
         //ouviu
-    }
-
-    touch_start ( integer num_detected )
-    {
-        //tocou
+        llOwnerSay("Enviando sua mensagem...");
+        SendChat ( name, message );
     }
 
     on_rez(integer start_param)
@@ -45,5 +58,17 @@ default {
         {
             llResetScript();
         }
+    }
+
+    http_response ( key request_id, integer status, list metadata, string body )
+    {
+        if ( request_id != http_request_id )
+        {
+            return;
+        }
+ 
+        llSetText ( body, RED, OPAQUE );
+        llOwnerSay("Mensagem Enviada com sucesso!");
+        llSetText ( "Para enviar uma mensagem digite /" + salaAula + " seguido de sua mensagem", RED, OPAQUE );
     }
 }
