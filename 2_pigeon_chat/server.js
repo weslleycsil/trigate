@@ -18,16 +18,32 @@ var socketIO = require("socket.io");
 var app = express();
 const server = https.createServer({key: key, cert: cert }, app);
 var io = socketIO(server);
+var bodyParser = require("body-parser");
 
 const { generatemsg } = require('./utils/messages')
 const { addUser, removeUser, getUser, getUserInRoom } = require('./utils/users')
 
 app.set("port", PORT);
+app.use(bodyParser.json());
 app.use("/static", express.static(__dirname + "/static"));
 
 // Routing
 app.get("/", function (request, response) {
   response.sendFile(path.join(__dirname, "/static/index.html"));
+});
+
+//receber mensagens do mundo virtual
+app.post('/message', function(req, res) {
+  ret = req.body;
+  /*
+  username: 'UFSC3D Developer9',
+  message: 'alo',
+  chat: '101'
+  register: false,
+  */
+  nMsg = generatemsg(ret.username, ret.message);
+  res.json(nMsg)
+  io.to(ret.chat).emit("message",nMsg);
 });
 
 // Starts the server.
