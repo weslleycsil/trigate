@@ -63,8 +63,8 @@ io.on("connection", (socket) => {
           return cb(error)
       }
       socket.join(user.room)
-      socket.emit("message", generatemsg("Admin ,Welcome"))
-      socket.broadcast.to(user.room).emit("message", generatemsg(`Admin ${user.username} has joined!`))
+      socket.emit("message", generatemsg("Admin","Welcome"))
+      socket.broadcast.to(user.room).emit("message", generatemsg("Admin", `${user.username} entrou!`))
       cb()
   })
 
@@ -72,7 +72,7 @@ io.on("connection", (socket) => {
       const user = getUser(socket.id)
       const mensg = generatemsg(user.username, msg);
       console.log(mensg,user.room);
-      io.to(user.room).emit("message", mensg)
+      socket.broadcast.to(user.room).emit("message", mensg);
       cb("")
   })
 
@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
       const user = removeUser(socket.id)
       console.log(user)
       if (user) {
-          io.to(user.room).emit("message", generatemsg(`Admin ${user.username} A user  has left`))
+          io.to(user.room).emit("message", generatemsg("Admin", `${user.username} saiu`))
       }
 
   })

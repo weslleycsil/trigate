@@ -53,7 +53,7 @@ var send_message_flow = function () {
 };
 
 var receive_message_flow = function (message) {
-  var filter_message = HTML_skip_Encode(message);
+  var filter_message = HTML_skip_Encode(message.text);
   message = filter_message["filtered_message"];
   var p_element = filter_message["object"];
   if (message !== "") {
