@@ -1,0 +1,44 @@
+version: '3'
+services:
+  portal:
+    build: ./1_trigate_portal
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    networks:
+      - backend
+  chat:
+    build: ./2_pigeon_chat
+    ports:
+      - "3000:3000"
+    restart: always
+  video:
+    build: ./3_video_broadcasting
+    ports:
+      - "8080:8080"
+    restart: always
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: admin1105
+      MYSQL_DATABASE: trigate
+    restart: always
+    networks:
+      - backend
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    networks:
+      - backend
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+
+networks:
+  backend:
