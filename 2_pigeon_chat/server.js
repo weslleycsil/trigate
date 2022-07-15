@@ -19,6 +19,9 @@ var app = express();
 const server = https.createServer({key: key, cert: cert }, app);
 var io = socketIO(server);
 
+const { generatemsg } = require('./utils/messages')
+const { addUser, removeUser, getUser, getUserInRoom } = require('./utils/users')
+
 app.set("port", PORT);
 app.use("/static", express.static(__dirname + "/static"));
 
@@ -32,10 +35,40 @@ server.listen(PORT, function () {
   console.log("Starting server on port " + PORT);
 });
 
-io.on("connection", function (socket) {
-  console.log("Socket " + socket.id + " joined us!");
-  socket.on("send_message", function (msg) {
-    socket.broadcast.emit("send_message", msg);
-  });
-});
+io.on("connection", (socket) => {
+  console.log("new connection")
+
+  socket.on("join", ({ username, room }, cb) => {
+
+
+      const { error, user } = addUser({ id: socket.id, username, room })
+
+      if (error) {
+          return cb(error)
+      }
+      socket.join(user.room)
+      socket.emit("message", generatemsg("Admin ,Welcome"))
+      socket.broadcast.to(user.room).emit("message", generatemsg(`Admin ${user.username} has joined!`))
+      cb()
+  })
+
+  socket.on("sendMessage", (msg, cb) => {
+      const user = getUser(socket.id)
+      const mensg = generatemsg(user.username, msg);
+      console.log(mensg,user.room);
+      io.to(user.room).emit("message", mensg)
+      cb("")
+  })
+
+  socket.on("disconnect", () => {
+      const user = removeUser(socket.id)
+      console.log(user)
+      if (user) {
+          io.to(user.room).emit("message", generatemsg(`Admin ${user.username} A user  has left`))
+      }
+
+  })
+
+
+})
 

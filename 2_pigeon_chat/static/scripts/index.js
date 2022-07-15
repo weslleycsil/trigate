@@ -44,7 +44,11 @@ var send_message_flow = function () {
     $("#text_field").val("");
 
     message_holder.scrollTop = message_holder.scrollHeight;
-    socket.emit("send_message", message);
+    socket.emit("sendMessage", message, (error)=> {
+      if (error) {
+        return console.log(error)
+      }
+    });
   }
 };
 
@@ -64,6 +68,19 @@ var receive_message_flow = function (message) {
 
 $(function () {
   socket = io();
+
+  //obter informações de sala e username
+  let params = new URLSearchParams(location.search);
+  username = params.get("user");
+  room = params.get("chat");
+
+  socket.emit('join', { username, room }, (error) => {
+    if (error) {
+        alert(error)
+        location.href = 'https://trigate.com'
+    }
+  })
+
   message_holder = document.getElementById("message_holder");
   message_panel = document.getElementById("messages");
 
@@ -80,7 +97,10 @@ $(function () {
     send_message_flow();
   });
 
-  socket.on("send_message", function (msg) {
+  socket.on("message", function (msg) {
+    console.log(msg)
     receive_message_flow(msg);
   });
 });
+
+
