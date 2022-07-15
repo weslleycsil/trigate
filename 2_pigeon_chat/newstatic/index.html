@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigate-Pigeon - 2.0</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" media="screen" />
+</head>
+<body>
+
+    <section class="msger">
+        <header class="msger-header">
+            <div class="msger-header-title">
+                <i class="fas fa-comment-alt"></i> Trigate-Pigeon - 2.0
+            </div>
+            <div class="msger-header-options">
+                <span><i class="fas fa-cog"></i></span>
+            </div>
+        </header>
+
+        <main class="msger-chat" id="msgerChat">
+        </main>
+
+        <div class="msger-inputarea">
+            <input type="text" id="msgerInput" class="msger-input" placeholder="Entre com sua mensagem...">
+            <button type="submit" class="msger-send-btn" id="send_button">Enviar</button>
+        </div>
+    </section>
+
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/moment-2.22.2.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/static/js/chat.js"></script>
+</body>
+</html>

@@ -25,11 +25,11 @@ const { addUser, removeUser, getUser, getUserInRoom } = require('./utils/users')
 
 app.set("port", PORT);
 app.use(bodyParser.json());
-app.use("/static", express.static(__dirname + "/static"));
+app.use("/static", express.static(__dirname + "/newstatic"));
 
 // Routing
 app.get("/", function (request, response) {
-  response.sendFile(path.join(__dirname, "/static/index.html"));
+  response.sendFile(path.join(__dirname, "/newstatic/index.html"));
 });
 
 //receber mensagens do mundo virtual
@@ -63,7 +63,7 @@ io.on("connection", (socket) => {
           return cb(error)
       }
       socket.join(user.room)
-      socket.emit("message", generatemsg("Admin","Welcome"))
+      socket.emit("message", generatemsg("Admin","Bem Vindo!"))
       socket.broadcast.to(user.room).emit("message", generatemsg("Admin", `${user.username} entrou!`))
       cb()
   })
