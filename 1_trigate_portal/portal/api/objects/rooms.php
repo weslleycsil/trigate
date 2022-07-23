@@ -109,6 +109,20 @@ class Rooms
         return false;
     }
 
+    public function get_user_rooms_opensim($opesimUser)
+    {
+        //query buscar o opensimuser no banco de dados
+        $query = "SELECT `rooms`.`socket_id` FROM " . $this->relational_rooms_users . " LEFT JOIN `login` ON " . $this->relational_rooms_users . ".user = login.id LEFT JOIN `rooms` ON `rooms`.id = `rooms_users`.room WHERE login.opensim_user=:opesimUser";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(":opesimUser", $opesimUser);
+
+        if ($stmt->execute()) {
+            return $stmt;
+        }
+        return false;
+    }
+
     public function subscribe()
     {
         // query to insert record
