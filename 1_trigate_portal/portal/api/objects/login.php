@@ -13,6 +13,8 @@ class Login
     private $password;
     private $email;
     private $admin;
+    //user opesim
+    private $opensim_user;
 
     // constructor with $db as database connection
     public function __construct($db)
@@ -86,6 +88,7 @@ class Login
         $stmt->bindParam(":id", $this->userUniqueId);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":admin", $this->admin);
+        //
 
         if ($stmt->execute()) {
             return true;
@@ -105,6 +108,25 @@ class Login
             return true;
         }
 
+        return false;
+    }
+
+    public function insertOpensimUser(){
+        // query to update record
+        $query = "UPDATE " . $this->table_name . " SET `opensim_user` =:opensim_user WHERE  username=:username";
+        //UPDATE `login` SET `opensim_user` = 'asd' WHERE `login`.`id` = '2317i313i98930214S231gRe3y0192h762667n4085055f36a';
+
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // bind valuesc
+        $stmt->bindParam(":opensim_user", $this->opensim_user);
+        $stmt->bindParam(":username", $this->username);
+
+        if ($stmt->execute()) {
+            return true;
+        }
         return false;
     }
 }

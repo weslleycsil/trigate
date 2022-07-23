@@ -137,3 +137,20 @@ function create_dir_if_not_exists($PATH)
     }
     return false;
 }
+
+function check_auth_opensim(){
+    //'Authorization: Basic b3BlbnNpbTpvcGVuc2lt'
+    $headers = getAuthorizationHeader();
+    if (!empty($headers)) {
+        if (preg_match('/Basic\s(\S+)/', $headers, $matches)) {
+            $un_pw = explode(":", base64_decode($matches[1]));
+            $user = $un_pw[0];
+            $pw = $un_pw[1];
+            if($user == "opensim" && $pw == "opensim"){
+                return true;
+            }
+            return false;
+        }
+    }
+    return false;
+}

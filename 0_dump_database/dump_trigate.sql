@@ -42,6 +42,7 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`id`, `nickname`, `username`, `password`, `email`, `admin`) VALUES
 ('2317i313i98930214S231gRe3y0192h762667n4085055f36d', 'Renan', 'Renan', 'Re123123', 'renanpinhoassi@gmail.com', 0),
+('2317i313i98930214S231gRe3y0192h762667n4085055f37d', 'Weslley', 'weslley', 'admin1105', 'renanpinhoassi@gmail.com', 0),
 ('9123e14397355e1130T0te72s5t65657r2T85r6e445s5f8e4', 'Tester', 'Tester', 'Tester123', 'tester@gmail.com', 0);
 
 -- --------------------------------------------------------
@@ -161,3 +162,11 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+/* adicionar novos campos na tabela */
+
+--
+-- Adiciona o campo opensim_user a fim de armazenar o nome do usuário no opensim
+--
+ALTER TABLE  `login `
+  ADD COLUMN opensim_user VARCHAR(100);
