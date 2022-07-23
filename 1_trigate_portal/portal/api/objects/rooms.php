@@ -59,7 +59,7 @@ class Rooms
 
 
     public function get_room_rooms(){
-        $query = "SELECT rooms.name,rooms.description,rooms.page_url,rooms.room_position FROM " . $this->relational_rooms_users . " JOIN rooms ON " . $this->relational_rooms_users . ".room = rooms.room WHERE " . $this->relational_rooms_users . ".user=:user AND " . $this->relational_rooms_users . ".room=:room ORDER BY rooms.room_position ASC";
+        $query = "SELECT trigate_rooms.name,trigate_rooms.description,trigate_rooms.page_url,trigate_rooms.room_position FROM " . $this->relational_rooms_users . " JOIN trigate_rooms ON " . $this->relational_rooms_users . ".room = trigate_rooms.room WHERE " . $this->relational_rooms_users . ".user=:user AND " . $this->relational_rooms_users . ".room=:room ORDER BY trigate_rooms.room_position ASC";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(":room", $this->room);
@@ -75,13 +75,13 @@ class Rooms
 
     public function get_users_by_room()
     {
-        $query = "SELECT room,login.nickname FROM " . $this->relational_rooms_users . " LEFT JOIN login ON " . $this->relational_rooms_users . ".user = login.id";
-        $stmt = $this->conn->prepare($query);
+            $query = "SELECT * FROM " . $this->relational_rooms_users . " LEFT JOIN trigate_login ON " . $this->relational_rooms_users . ".user = trigate_login.id";
+            $stmt = $this->conn->prepare($query);
 
-        if ($stmt->execute()) {
-            return $stmt;
-        }
-        return false;
+            if ($stmt->execute()) {
+                return $stmt;
+            }
+            return false;
     }
 
     public function get_users_on_room()
@@ -99,7 +99,7 @@ class Rooms
 
     public function get_user_rooms($id)
     {
-        $query = "SELECT room FROM " . $this->relational_rooms_users . " LEFT JOIN login ON " . $this->relational_rooms_users . ".user = login.id WHERE login.id=:id";
+        $query = "SELECT room FROM " . $this->relational_rooms_users . " LEFT JOIN trigate_login ON " . $this->relational_rooms_users . ".user = trigate_login.id WHERE trigate_login.id=:id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(":id", $id);
 
