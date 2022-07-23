@@ -26,7 +26,6 @@ SendRegister ( string name, string username )
     HTTP_PRAGMA_NO_CACHE, TRUE ],llList2Json(JSON_OBJECT, json));
 }
 
---header 'Authorization: Basic b3BlbnNpbTpvcGVuc2lt' \
 
 default
 {
