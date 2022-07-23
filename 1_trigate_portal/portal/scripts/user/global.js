@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 
-var base_url = "https://ufsc3d.inf.ufsc.br/developer1_5.2";
+var base_url = "https://ufsc3d.inf.ufsc.br/developer1_5.2/portal";
 var api_base_url = base_url + "/api";
 var gallery_base_url = base_url + "/gallery/";
 
