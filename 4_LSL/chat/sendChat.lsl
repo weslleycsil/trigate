@@ -10,7 +10,7 @@ integer listenHandle;
 key http_request_id;
 
 //variaveis editaveis
-string URL_CHAT = "https://trigate.twcreativs.com.br/message";
+string URL_CHAT = "https://chat.trigate.twcreativs.com.br/message";
 integer salaAula = 101;
 
 //Informações de cor/opacidade do texto
