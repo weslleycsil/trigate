@@ -8,7 +8,7 @@ integer listenHandle;
 key http_request_id;
 
 //variaveis editaveis
-string URL_API = "https://trigate.twcreativs.com.br/api/rooms/get_rooms_by_user_opensim.php";
+string URL_API = "https://ufsc3d.inf.ufsc.br/developer1_5.2/portal/api/rooms/get_rooms_by_user_opensim.php";
 integer sala = 101;
 
 //Informações de cor/opacidade do texto

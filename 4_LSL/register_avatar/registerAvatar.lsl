@@ -8,7 +8,7 @@ integer listenHandle;
 key http_request_id;
 
 //variaveis editaveis
-string URL_API = "https://trigate.twcreativs.com.br/api/login/update_opensim.php";
+string URL_API = "https://ufsc3d.inf.ufsc.br/developer1_5.2/portal/api/login/update_opensim.php";
 integer register = 779;
 
 //Informações de cor/opacidade do texto
