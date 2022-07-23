@@ -4,8 +4,8 @@ class Rooms
 
     // database connection and table name
     private $conn;
-    private $table_name = "rooms";
-    private $relational_rooms_users = "rooms_users";
+    private $table_name = "trigate_rooms";
+    private $relational_rooms_users = "trigate_rooms_users";
 
     // object properties
     private $id;
@@ -112,7 +112,7 @@ class Rooms
     public function get_user_rooms_opensim($opesimUser)
     {
         //query buscar o opensimuser no banco de dados
-        $query = "SELECT `rooms`.`socket_id` FROM " . $this->relational_rooms_users . " LEFT JOIN `login` ON " . $this->relational_rooms_users . ".user = login.id LEFT JOIN `rooms` ON `rooms`.id = `rooms_users`.room WHERE login.opensim_user=:opesimUser";
+        $query = "SELECT `trigate_rooms`.`socket_id` FROM " . $this->relational_rooms_users . " LEFT JOIN `trigate_login` ON " . $this->relational_rooms_users . ".user = trigate_login.id LEFT JOIN `trigate_rooms` ON `trigate_rooms`.id = `trigate_rooms_users`.room WHERE trigate_login.opensim_user=:opesimUser";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(":opesimUser", $opesimUser);

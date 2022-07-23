@@ -4,7 +4,7 @@ class Peding_Login
 
     // database connection and table name
     private $conn;
-    private $table_name = "pending_login";
+    private $table_name = "trigate_pending_login";
 
     // object properties
     private $id;

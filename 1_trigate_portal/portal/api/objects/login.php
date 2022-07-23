@@ -4,7 +4,7 @@ class Login
 
     // database connection and table name
     private $conn;
-    private $table_name = "login";
+    private $table_name = "trigate_login";
 
     // object properties
     private $userUniqueId;
