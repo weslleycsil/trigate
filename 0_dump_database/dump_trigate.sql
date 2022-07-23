@@ -163,10 +163,10 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-/* adicionar novos campos na tabela */
+/* adicionar novos campos nas tabelas */
 
 --
 -- Adiciona o campo opensim_user a fim de armazenar o nome do usuário no opensim
 --
-ALTER TABLE  `login `
+ALTER TABLE  `login`
   ADD COLUMN opensim_user VARCHAR(100);
