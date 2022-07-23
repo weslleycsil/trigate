@@ -140,7 +140,8 @@ function create_dir_if_not_exists($PATH)
 
 function check_auth_opensim(){
     //'Authorization: Basic b3BlbnNpbTpvcGVuc2lt'
-    $headers = getAuthorizationHeader();
+    //futura implementação de cabeçalho de autenticação caso lsl comece a suportar
+    /*$headers = getAuthorizationHeader();
     if (!empty($headers)) {
         if (preg_match('/Basic\s(\S+)/', $headers, $matches)) {
             $un_pw = explode(":", base64_decode($matches[1]));
@@ -151,6 +152,6 @@ function check_auth_opensim(){
             }
             return false;
         }
-    }
-    return false;
+    }*/
+    return true;
 }
